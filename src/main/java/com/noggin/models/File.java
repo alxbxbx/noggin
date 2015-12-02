@@ -1,4 +1,4 @@
-package models;
+package com.noggin.models;
 
 public class File {
 	
