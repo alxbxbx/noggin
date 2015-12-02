@@ -9,6 +9,7 @@ public class TestController {
 
 	@RequestMapping("/welcome")
 	public String helloWorld(Model model) {
+		System.out.println("omfg");
 		model.addAttribute("message", "Hello World!");
 		return "index";
 	}
