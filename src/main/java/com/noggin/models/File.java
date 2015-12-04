@@ -1,9 +1,17 @@
 package com.noggin.models;
-
+import javax.persistence.*;
+@Entity
+@Table(name = "file")
 public class File {
 	
+	@Id @GeneratedValue
+	@Column(name = "id")
 	private Integer id;
+	
+	@Column(name="filename")
 	private String fileName;
+	
+	@Column(name="mime")
 	private String MIME;
 	
 	public File(){}

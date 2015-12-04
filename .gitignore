@@ -3,4 +3,4 @@
 .project
 .settings
 /bin/
-hibernate.cfg.xml
+src/main/java/hibernate.cfg.xml

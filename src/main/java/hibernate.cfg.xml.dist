@@ -4,6 +4,9 @@
 
 <hibernate-configuration>
    <session-factory>
+   <property name="hibernate.id.new_generator_mappings">
+		false
+	</property>
    <property name="hibernate.dialect">
       org.hibernate.dialect.MySQLDialect
    </property>
@@ -11,15 +14,13 @@
       com.mysql.jdbc.Driver
    </property>
 
-   <!-- Assume test is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost/DATABASE_NAME
+      jdbc:mysql://localhost/noggin
    </property>
    <property name="hibernate.connection.username">
-      	USERNAME
+      root
    </property>
    <property name="hibernate.connection.password">
-   		PASSWORD
    </property>
 
 </session-factory>
