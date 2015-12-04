@@ -9,6 +9,7 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String helloWorld(Model model) {
+	
 		return "index";
 	}
 

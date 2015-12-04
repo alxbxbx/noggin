@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.noggin.models.File;
 
-public class FileDao {
+public class FileDao implements FileDaoInterface {
 	
 	private static  SessionFactory factory;
 	
@@ -22,18 +22,16 @@ public class FileDao {
 		}
 		
 		FileDao fd = new FileDao();
-		fd.addFile("NewFile", "Something is about to happen");
+		File file = new File("Second file", "Something is about to happen");
+		fd.addFile(file);
 		
 	}
 	
-	public void addFile(String filename, String mime){
+	public void addFile(File file){
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			File file = new File();
-			file.setFileName(filename);
-			file.setMIME(mime);
 			session.save(file);
 			tx.commit();
 		}catch (HibernateException e) {
@@ -43,5 +41,22 @@ public class FileDao {
          session.close(); 
 		}
 	}
+
+	public void removeFile(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateFile(File file) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public File getFile(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

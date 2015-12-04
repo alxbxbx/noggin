@@ -22,6 +22,10 @@ public class File {
 		this.fileName = fileName;
 		MIME = mIME;
 	}
+	public File(String fileName, String mime){
+		this.fileName = fileName;
+		this.MIME = mime;
+	}
 
 	public Integer getId() {
 		return id;
