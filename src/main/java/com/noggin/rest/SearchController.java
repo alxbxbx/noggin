@@ -16,24 +16,22 @@ public class SearchController {
 	public List<Book> search(String title, String author, String keywords, 
 			String content, String language) {
 
-		List<Book> books = null;
-		
 		// Test Data
-		EBook book1 = new EBook();
+		Book book1 = new Book();
 		book1.setId(1);
 		book1.setAuthor("Filip Bekic");
 		book1.setKeywords("omg yes god wtf what are these");
 		book1.setPublicationYear(2011);
 		book1.setTitle("Ivica Dacic ubija AZDAHU");
 		
-		EBook book2 = new EBook();
+		Book book2 = new Book();
 		book2.setId(2);
 		book2.setAuthor("Milorad Dragutinovic");
 		book2.setKeywords("omg yes god wtf what are these");
 		book2.setPublicationYear(2001);
 		book2.setTitle("Cigani igraju kolo");
 		
-		List<EBook> books = new ArrayList<EBook>();
+		List<Book> books = new ArrayList<Book>();
 		
 		books.add(book1);
 		books.add(book2);
