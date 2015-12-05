@@ -1,8 +1,14 @@
 package com.noggin.models;
-
+import javax.persistence.*;
+@Entity
+@Table(name="language")
 public class Language {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private Integer id;
+	
+	@Column(name="name")
 	private String name;
 	
 	public Language(){}

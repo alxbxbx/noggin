@@ -14,14 +14,39 @@ public class File {
 	@Column(name="mime")
 	private String MIME;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="book_id", nullable = false)
+	private Book book;
+	
 	public File(){}
-
-	public File(Integer id, String fileName, String mIME) {
+	
+	
+	public File(Integer id, String fileName, String mIME, Book book) {
 		super();
 		this.id = id;
 		this.fileName = fileName;
 		MIME = mIME;
+		this.book = book;
 	}
+	
+	public File(String fileName, String mIME, Book book) {
+		super();
+		this.fileName = fileName;
+		MIME = mIME;
+		this.book = book;
+	}
+
+	
+	public Book getBook() {
+		return book;
+	}
+
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+
 	public File(String fileName, String mime){
 		this.fileName = fileName;
 		this.MIME = mime;

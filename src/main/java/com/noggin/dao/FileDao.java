@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.noggin.models.Book;
 import com.noggin.models.File;
 
 public class FileDao implements FileDaoInterface {
@@ -20,9 +21,10 @@ public class FileDao implements FileDaoInterface {
 			System.err.println("Failed to create Session Factory object. "+ex);
 			throw new ExceptionInInitializerError(ex);
 		}
-		
+		Book book = new Book();
+		book.setId(1);
 		FileDao fd = new FileDao();
-		File file = new File("Second file", "Something is about to happen");
+		File file = new File("Third file", "Something is about to happen", book);
 		fd.addFile(file);
 		
 	}
