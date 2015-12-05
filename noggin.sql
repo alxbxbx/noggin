@@ -32,13 +32,13 @@ CREATE TABLE `category` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `e_book`
+-- Table structure for table `book`
 --
 
-DROP TABLE IF EXISTS `e_book`;
+DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `e_book` (
+CREATE TABLE `book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(80) NOT NULL,
   `author` varchar(120) DEFAULT NULL,

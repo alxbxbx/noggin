@@ -1,8 +1,6 @@
 package com.noggin.controllers;
 
-import java.util.Enumeration;
-
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AuthController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpSession session) {
+	public String login(HttpServletRequest request) {
 		System.out.println("login triggered");
-		session.setAttribute("t1key", "t1value");
-		System.out.println("*** Session data ***");
-		  Enumeration<String> e = session.getAttributeNames();
-		  while (e.hasMoreElements()){
-			String s = e.nextElement();
-			System.out.println(s);
-			System.out.println("**" + session.getAttribute(s));
-		  }
+		request.getSession().setAttribute("t1key", "t1value");
 		return "index";
 	}
 	

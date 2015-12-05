@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	</head>
 	<body>
-		
+		SESIJA: ${sessionScope.t1key} 
 		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
