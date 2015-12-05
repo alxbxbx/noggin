@@ -1,5 +1,7 @@
 package com.noggin.dao;
 
+import java.util.List;
+
 import com.noggin.models.Category;
 
 public interface CategoryDaoInterface {
@@ -8,5 +10,6 @@ public interface CategoryDaoInterface {
 	public void removeCategory(Integer id);
 	public void updateCategory(Category category);
 	public Category getCategory(Integer id);
+	public List<Category> getAllCategories();
 
 }

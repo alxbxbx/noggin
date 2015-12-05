@@ -1,5 +1,7 @@
 package com.noggin.dao;
 
+import java.util.List;
+
 import com.noggin.models.File;
 
 public interface FileDaoInterface {
@@ -8,6 +10,7 @@ public interface FileDaoInterface {
 	public void removeFile(Integer id);
 	public void updateFile(File file);
 	public File getFile(Integer id);
-
+	public List<File> getAllFiles();
+	public List<File> getFilesByBook(Integer id);
 
 }

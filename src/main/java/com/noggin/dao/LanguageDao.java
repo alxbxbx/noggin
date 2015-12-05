@@ -7,27 +7,22 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import com.noggin.models.Category;
-import com.noggin.models.User;
+import com.noggin.models.Language;
 
-
-public class CategoryDao implements CategoryDaoInterface{
-	
+public class LanguageDao implements LanguageDaoInterface{
 	private static  SessionFactory factory;
 	
 	public static void main(String[] args){
+		LanguageDao ld = new LanguageDao();
+		Language language = ld.getLanguage(1);
+		System.out.println(language.getName());
 		
-		CategoryDao cd = new CategoryDao();
-		List<Category> categories = cd.getAllCategories();
-		for(Category c : categories){
-			System.out.println(c.getName());
-		}
 	}
 
 	@Override
-	public void addCategory(Category category) {
+	public void addLanguage(Language language) {
 		try{
-			factory = new Configuration().configure().addAnnotatedClass(Category.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(Language.class).buildSessionFactory();
 			
 		}catch(Throwable ex){
 			System.err.println("Failed to create Session Factory object. "+ex);
@@ -37,7 +32,7 @@ public class CategoryDao implements CategoryDaoInterface{
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.save(category);
+			session.save(language);
 			tx.commit();
 		}catch (HibernateException e) {
 			if (tx!=null) tx.rollback();
@@ -48,9 +43,9 @@ public class CategoryDao implements CategoryDaoInterface{
 	}
 
 	@Override
-	public void removeCategory(Integer id) {
+	public void removeLanguage(Integer id) {
 		try{
-			factory = new Configuration().configure().addAnnotatedClass(Category.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(Language.class).buildSessionFactory();
 			
 		}catch(Throwable ex){
 			System.err.println("Failed to create Session Factory object. "+ex);
@@ -60,8 +55,8 @@ public class CategoryDao implements CategoryDaoInterface{
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			Category category = session.get(Category.class, id);
-			session.delete(category);
+			Language language = session.get(Language.class, id);
+			session.delete(language);
 			tx.commit();
 		}catch (HibernateException e) {
 			if (tx!=null) tx.rollback();
@@ -72,9 +67,9 @@ public class CategoryDao implements CategoryDaoInterface{
 	}
 
 	@Override
-	public void updateCategory(Category category) {
+	public void updateLanguage(Language language) {
 		try{
-			factory = new Configuration().configure().addAnnotatedClass(Category.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(Language.class).buildSessionFactory();
 			
 		}catch(Throwable ex){
 			System.err.println("Failed to create Session Factory object. "+ex);
@@ -84,7 +79,7 @@ public class CategoryDao implements CategoryDaoInterface{
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.update(category);
+			session.update(language);
 			tx.commit();
 		}catch (HibernateException e) {
 			if (tx!=null) tx.rollback();
@@ -95,20 +90,20 @@ public class CategoryDao implements CategoryDaoInterface{
 	}
 
 	@Override
-	public Category getCategory(Integer id) {
+	public Language getLanguage(Integer id) {
 		try{
-			factory = new Configuration().configure().addAnnotatedClass(Category.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(Language.class).buildSessionFactory();
 			
 		}catch(Throwable ex){
 			System.err.println("Failed to create Session Factory object. "+ex);
 			throw new ExceptionInInitializerError(ex);
 		}
-		Category category = null;
+		Language language = null;
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			category = session.get(Category.class, id);
+			language = session.get(Language.class, id);
 			tx.commit();
 		}catch (HibernateException e) {
 			if (tx!=null) tx.rollback();
@@ -116,24 +111,24 @@ public class CategoryDao implements CategoryDaoInterface{
 		}finally {
          session.close(); 
 		}
-		return category;
+		return language;
 	}
 
 	@Override
-	public List<Category> getAllCategories() {
+	public List<Language> getAllLanguages() {
 		try{
-			factory = new Configuration().configure().addAnnotatedClass(Category.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(Language.class).buildSessionFactory();
 			
 		}catch(Throwable ex){
 			System.err.println("Failed to create Session Factory object. "+ex);
 			throw new ExceptionInInitializerError(ex);
 		}
-		List<Category> categories = null;
+		List<Language> languages = null;
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			categories = session.createCriteria(Category.class).list();
+			languages = session.createCriteria(Language.class).list();
 			tx.commit();
 		}catch (HibernateException e) {
 			if (tx!=null) tx.rollback();
@@ -141,7 +136,7 @@ public class CategoryDao implements CategoryDaoInterface{
 		}finally {
          session.close(); 
 		}
-		return categories;
+		return languages;
 	}
 
 }
