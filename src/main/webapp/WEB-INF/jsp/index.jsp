@@ -106,15 +106,6 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Available Books</div>
 						<table class="table table-striped" ng-controller="BooksController">
-							<thead>
-								<tr>
-									<th>Title</th>
-									<th>Author</th>
-									<th>Release Date</th>
-									<th>Size</th>
-									<th>Download</th>
-								</tr>
-							</thead>
 							<tbody>
 								<tr>
 									<td colspan="5">
@@ -130,10 +121,11 @@
 								</tr>
 								<tr ng-repeat="book in books | filter:searchInput">
 									<td>{{ book.name }}</td>
-									<td>Philip Jonson</td>
-									<td>24.12.1998</td>
-									<td>24MB</td>
-									<td><a href="#" class="btn btn-primary btn-xs" role="button">Download</a></td>
+									<td style="width:100px;text-align:right;">
+										<a href="#" class="btn btn-primary btn-xs" role="button">
+											<span class="glyphicon glyphicon-download-alt"></span> Download
+										</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
