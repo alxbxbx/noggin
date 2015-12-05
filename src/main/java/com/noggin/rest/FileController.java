@@ -15,7 +15,7 @@ public class FileController {
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
 	
-	@RequestMapping(value="/file", method=RequestMethod.GET)
+	@RequestMapping("/file")
 	public File file(@RequestParam(value="name", defaultValue="World") String name){
 		return new File((int) counter.incrementAndGet(),
                 String.format(template, name), "Come again!");

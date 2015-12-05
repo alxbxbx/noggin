@@ -16,6 +16,7 @@
     </parent>
   
 	<dependencies>
+		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -32,21 +33,35 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- Hibernate dependencies -->
+		<dependency>
     		<groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
 		    <version>5.0.4.Final</version>
 		</dependency>
-
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-entitymanager</artifactId>
 		    <version>5.0.4.Final</version>
 		</dependency>
+		
+		<!-- MySql dependencies -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
+		
+		<!-- Javax dependencies -->
 		<dependency>
 	      <groupId>javax.transaction</groupId>
 	      <artifactId>jta</artifactId>
