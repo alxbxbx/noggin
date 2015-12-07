@@ -2,35 +2,29 @@
 	
 	var app = angular.module('noggin', []);
 	
-	app.controller('BooksController', function($scope, $http) {
+	app.factory('booksFactory', ['$http', function($http) {
 		
-		books = "[" +
-				"	{" +
-				"		\"name\": \"Aca Samuraj\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Filip Doktor\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Nikola Vorinski\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Sasa Ferenc\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Stefan Vuckovic\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Black Painter\"" +
-				"	}," +
-				"	{" +
-				"		\"name\": \"Doktori S Nega\"" +
-				"	}" +
-				"]";
+		var factory = {};
 		
-		$scope.books = JSON.parse(books);
+		factory.search = function() {
+			return $http.get('search');
+		};
 		
-		console.log($scope.books);
-	});
+		return factory;
+	
+	}]);
+	
+	app.controller('BooksController', ['$scope', 'booksFactory', function($scope, booksFactory) {
+		
+		$scope.books = [];
+		init();
+		function init(){
+			booksFactory.search().success(function(data) {
+				$scope.books = data;
+				console.log($scope.books);
+			});
+		}
+		
+	}]);
 	
 })();

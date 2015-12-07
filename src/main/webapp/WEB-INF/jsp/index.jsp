@@ -105,7 +105,7 @@
 	            <div class="col-lg-8">
 					<div class="panel panel-default">
 						<div class="panel-heading">Available Books</div>
-						<table class="table table-striped" ng-controller="BooksController">
+						<table class="table table-striped" ng-controller="BooksController as booksCtrl">
 							<tbody>
 								<tr>
 									<td colspan="5">
@@ -119,8 +119,8 @@
 					                    </div>
 									</td>
 								</tr>
-								<tr ng-repeat="book in books | filter:searchInput">
-									<td>{{ book.name }}</td>
+								<tr ng-repeat="book in booksCtrl.books | filter:searchInput">
+									<td>{{ book.title }}, {{ book.author }}</td>
 									<td style="width:100px;text-align:right;">
 										<a href="#" class="btn btn-primary btn-xs" role="button">
 											<span class="glyphicon glyphicon-download-alt"></span> Download

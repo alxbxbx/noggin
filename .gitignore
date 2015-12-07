@@ -4,3 +4,6 @@
 .settings
 /bin/
 src/main/java/hibernate.cfg.xml
+
+.idea
+*.iml
