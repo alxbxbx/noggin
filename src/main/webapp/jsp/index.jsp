@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	</head>
-	<body>
+	<body ng-controller="IndexController">
 		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
@@ -75,50 +75,30 @@
 				</div>
 			</div>
 	        <div class="row makeitboxy">
-	        	<div class="col-md-4">
+				<div class="input-group main-search-input">
+					<input type="text" class="form-control" placeholder="Enter book name..." ng-model="searchInput">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+				</div>
+	        	<div class="col-md-3 padding-right-none">
 	        		<div class="panel panel-default">
 						<div class="panel-heading">Categories</div>
 		                <ul class="list-group">
-						  	<li class="list-group-item">
+						  	<li class="list-group-item" ng-repeat="category in categories">
 							    <span class="badge">14</span>
-						    	Category Name
-							</li>
-							<li class="list-group-item">
-							    <span class="badge">14</span>
-						    	Category Name
-							</li>
-							<li class="list-group-item">
-							    <span class="badge">14</span>
-						    	Category Name
-							</li>
-							<li class="list-group-item">
-							    <span class="badge">14</span>
-						    	Category Name
-							</li>
-							<li class="list-group-item">
-							    <span class="badge">14</span>
-						    	Category Name
+						    	{{ category.name }}
 							</li>
 						</ul>
 					</div>
 	            </div>
-	            <div class="col-lg-8">
+	            <div class="col-lg-9">
 					<div class="panel panel-default">
 						<div class="panel-heading">Available Books</div>
-						<table class="table table-striped" ng-controller="BooksController">
+						<table class="table table-striped">
 							<tbody>
-								<tr>
-									<td colspan="5">
-										<div class="input-group" style="width:100%">
-	                        				<input type="text" class="form-control" placeholder="Enter book name..." ng-model="searchInput">
-					                        <span class="input-group-btn">
-					                            <button class="btn btn-default" type="button">
-					                                <span class="glyphicon glyphicon-filter"></span>
-					                        </button>
-					                        </span>
-					                    </div>
-									</td>
-								</tr>
 								<tr ng-repeat="book in books | filter:searchInput">
 									<td>{{ book.title }}, {{ book.author }}</td>
 									<td style="width:100px;text-align:right;">
