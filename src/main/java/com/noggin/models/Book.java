@@ -21,6 +21,9 @@ public class Book {
 	@Column(name="publication_year")
 	private Integer publicationYear;
 	
+	@Column(name="filename")
+	private String filename;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id", nullable = false)
 	private Category category;
@@ -35,18 +38,28 @@ public class Book {
 	
 	public Book(){}
 	
-	public Book(Integer id, String title, String author, String keywords, Integer publicationYear, Category category,
-			Language language, User user) {
+	public Book(Integer id, String title, String author, String keywords, Integer publicationYear, String filename,
+			Category category, Language language, User user) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.keywords = keywords;
 		this.publicationYear = publicationYear;
+		this.filename = filename;
 		this.category = category;
 		this.language = language;
 		this.user = user;
 	}
+	
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
 	public Integer getId() {
 		return id;
 	}
