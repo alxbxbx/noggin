@@ -7,21 +7,22 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import com.noggin.models.Category;
-import com.noggin.models.User;
 
 
 public class CategoryDao implements CategoryDaoInterface{
 	
 	private static  SessionFactory factory;
 	
+	
 	public static void main(String[] args){
 		
-		CategoryDao cd = new CategoryDao();
-		List<Category> categories = cd.getAllCategories();
-		for(Category c : categories){
-			System.out.println(c.getName());
-		}
+
+
 	}
 
 	@Override
@@ -142,6 +143,114 @@ public class CategoryDao implements CategoryDaoInterface{
          session.close(); 
 		}
 		return categories;
+	}
+
+	@Override
+	public void deleteAllInBatch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteInBatch(Iterable<Category> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Category> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Category> findAll(Sort arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Category> findAll(Iterable<Integer> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void flush() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Category getOne(Integer arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends Category> List<S> save(Iterable<S> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends Category> S saveAndFlush(S arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Category> findAll(Pageable arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void delete(Integer arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Category arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Iterable<? extends Category> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean exists(Integer arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Category findOne(Integer arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends Category> S save(S arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

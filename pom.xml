@@ -41,7 +41,16 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-        
+        <dependency>
+		   <groupId>org.springframework.data</groupId>
+		   <artifactId>spring-data-jpa</artifactId>
+		   <version>1.6.0.RELEASE</version>
+		</dependency>
+        <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>2.5.1</version>
+		</dependency>
         <!-- Hibernate dependencies -->
 		<dependency>
     		<groupId>org.hibernate</groupId>
@@ -106,6 +115,12 @@
 			<artifactId>lucene-highlighter</artifactId>
 			<version>4.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		
 	</dependencies>
 	
 	<build>
