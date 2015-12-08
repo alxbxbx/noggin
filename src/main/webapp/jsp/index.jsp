@@ -119,7 +119,7 @@
 					                    </div>
 									</td>
 								</tr>
-								<tr ng-repeat="book in books">
+								<tr ng-repeat="book in books | filter:searchInput">
 									<td>{{ book.title }}, {{ book.author }}</td>
 									<td style="width:100px;text-align:right;">
 										<a href="#" class="btn btn-primary btn-xs" role="button">

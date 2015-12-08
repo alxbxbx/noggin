@@ -33,7 +33,7 @@
 	app.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
 		when('/dashboard', {
-			templateUrl: 'resources/dashboard.html',
+			templateUrl: 'resources/html/dashboard.html',
 			controller: 'AdminDashboardController'
 		}).
 		otherwise({
