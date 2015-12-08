@@ -9,7 +9,7 @@
 		factory.search = function() {
 			return $http.get('search');
 		};
-		
+
 		return factory;
 	
 	}]);
@@ -25,7 +25,7 @@
 		});
 		
 	}]);
-	
+
 	app.controller('AdminDashboardController', ['$scope', function($scope) {
 		
 	}]);
