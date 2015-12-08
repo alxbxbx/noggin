@@ -119,7 +119,7 @@
 					                    </div>
 									</td>
 								</tr>
-								<tr ng-repeat="book in books">
+								<tr ng-repeat="book in books | filter:searchInput">
 									<td>{{ book.title }}, {{ book.author }}</td>
 									<td style="width:100px;text-align:right;">
 										<a href="#" class="btn btn-primary btn-xs" role="button">
@@ -144,6 +144,7 @@
     	</div>
 		
 		<script type="text/javascript" src="resources/js/angular.min.js"></script>
+		<script type="text/javascript" src="resources/js/angular-route.min.js"></script>
 		<script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/js/main.js"></script>

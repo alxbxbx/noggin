@@ -1,6 +1,6 @@
 (function(){
 	
-	var app = angular.module('noggin', []);
+	var app = angular.module('noggin', ['ngRoute']);
 	
 	app.factory('booksFactory', ['$http', function($http) {
 		
@@ -9,7 +9,7 @@
 		factory.search = function() {
 			return $http.get('search');
 		};
-		
+
 		return factory;
 	
 	}]);
@@ -19,10 +19,26 @@
 		$scope.books = [];
 		
 		booksFactory.search().success(function(data) {
+			
 			$scope.books = data;
-			console.log($scope.books);
+			
 		});
 		
+	}]);
+
+	app.controller('AdminDashboardController', ['$scope', function($scope) {
+		
+	}]);
+	
+	app.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.
+		when('/dashboard', {
+			templateUrl: 'resources/html/dashboard.html',
+			controller: 'AdminDashboardController'
+		}).
+		otherwise({
+			redirectTo: '/dashboard'
+		});
 	}]);
 	
 })();
