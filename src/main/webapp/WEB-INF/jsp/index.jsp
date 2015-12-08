@@ -5,11 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Noggin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	</head>
 	<body>
-		SESIJA: ${sessionScope.t1key} 
 		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
@@ -105,7 +105,7 @@
 	            <div class="col-lg-8">
 					<div class="panel panel-default">
 						<div class="panel-heading">Available Books</div>
-						<table class="table table-striped" ng-controller="BooksController as booksCtrl">
+						<table class="table table-striped" ng-controller="BooksController">
 							<tbody>
 								<tr>
 									<td colspan="5">
@@ -119,7 +119,7 @@
 					                    </div>
 									</td>
 								</tr>
-								<tr ng-repeat="book in booksCtrl.books | filter:searchInput">
+								<tr ng-repeat="book in books">
 									<td>{{ book.title }}, {{ book.author }}</td>
 									<td style="width:100px;text-align:right;">
 										<a href="#" class="btn btn-primary btn-xs" role="button">

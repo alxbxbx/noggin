@@ -17,13 +17,11 @@
 	app.controller('BooksController', ['$scope', 'booksFactory', function($scope, booksFactory) {
 		
 		$scope.books = [];
-		init();
-		function init(){
-			booksFactory.search().success(function(data) {
-				$scope.books = data;
-				console.log($scope.books);
-			});
-		}
+		
+		booksFactory.search().success(function(data) {
+			$scope.books = data;
+			console.log($scope.books);
+		});
 		
 	}]);
 	
