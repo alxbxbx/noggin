@@ -46,11 +46,6 @@
 		   <artifactId>spring-data-jpa</artifactId>
 		   <version>1.6.0.RELEASE</version>
 		</dependency>
-        <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>2.5.1</version>
-		</dependency>
         <!-- Hibernate dependencies -->
 		<dependency>
     		<groupId>org.hibernate</groupId>

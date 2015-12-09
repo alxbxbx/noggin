@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Noggin Administration</title>
-	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/admin.css">
 </head>
 <body>
@@ -41,10 +41,10 @@
 		<div ng-view></div>
 	</div>
 
-	<script type="text/javascript" src="resources/js/angular.min.js"></script>
-	<script type="text/javascript" src="resources/js/angular-route.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="resources/js/main.js"></script>
+	<script type="text/javascript" src="resources/js/libs/angular.min.js"></script>
+	<script type="text/javascript" src="resources/js/libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="resources/js/libs/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="resources/js/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/admin.js"></script>
 </body>
 </html>

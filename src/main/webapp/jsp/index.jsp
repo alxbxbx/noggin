@@ -6,8 +6,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Noggin</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/libs/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/index.css">
 	</head>
 	<body ng-controller="IndexController">
 		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
@@ -123,10 +123,10 @@
 	        </footer>
     	</div>
 		
-		<script type="text/javascript" src="resources/js/angular.min.js"></script>
-		<script type="text/javascript" src="resources/js/angular-route.min.js"></script>
-		<script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="resources/js/main.js"></script>
+		<script type="text/javascript" src="resources/js/libs/angular.min.js"></script>
+		<script type="text/javascript" src="resources/js/libs/angular-route.min.js"></script>
+		<script type="text/javascript" src="resources/js/libs/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="resources/js/libs/bootstrap.min.js"></script>
+		<script type="text/javascript" src="resources/js/index.js"></script>
 	</body>
 </html>
