@@ -24,7 +24,8 @@ public class CategoryDao implements CategoryDaoInterface{
 
 
 	}
-
+	
+	
 	@Override
 	public void addCategory(Category category) {
 		try{

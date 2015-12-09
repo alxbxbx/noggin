@@ -27,6 +27,6 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="0"/>
 	<mvc:annotation-driven />
-	<jpa:repositories base-package="com.noggin.dao"/>
+	<jpa:repositories base-package="com.noggin.dao.repositories"/>
 	
 </beans>

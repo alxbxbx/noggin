@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <session-factory>
+   <property name="hibernate.id.new_generator_mappings">
+		false
+	</property>
+   <property name="hibernate.dialect">
+      org.hibernate.dialect.MySQLDialect
+   </property>
+   <property name="hibernate.connection.driver_class">
+      com.mysql.jdbc.Driver
+   </property>
+
+   <property name="hibernate.connection.url">
+      jdbc:mysql://localhost/noggin
+   </property>
+   <property name="hibernate.connection.username">
+      root
+   </property>
+   <property name="hibernate.connection.password">
+   </property>
+   
+   <mapping class="com.noggin.models.File" />
+   <mapping class="com.noggin.models.Book" />
+   <mapping class="com.noggin.models.Category" />
+   <mapping class="com.noggin.models.Language" />
+   <mapping class="com.noggin.models.User" />
+  
+
+</session-factory>
+</hibernate-configuration>
