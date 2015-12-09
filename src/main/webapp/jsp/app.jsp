@@ -17,13 +17,13 @@
 
 		<div id="headground"></div>
 
-        <div ng-include="'/resources/html/pages/main_menu.html'"></div>
+        <div ng-include="'/resources/html/partials/main_menu.html'"></div>
 	    
 		<div class="container">
 
 			<div ng-view></div>
 
-            <div ng-include="'/resources/html/pages/footer.html'"></div>
+            <div ng-include="'/resources/html/partials/footer.html'"></div>
 
     	</div>
 		
