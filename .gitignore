@@ -3,7 +3,7 @@
 .project
 .settings
 /bin/
-src/main/java/hibernate.cfg.xml
+src/main/java/resources/hibernate.cfg.xml
 
 .idea
 *.iml
