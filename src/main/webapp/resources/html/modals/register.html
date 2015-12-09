@@ -1,0 +1,86 @@
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Registration</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <form class="form-register" action="register" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="register-first-name">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="register-first-name-addon">
+                                    <span class=" glyphicon glyphicon-edit"></span>
+                                </span>
+                                <input type="username" id="register-first-name" name="firstName" class="form-control" describedby="register-first-name-addon" placeholder="First Name">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="register-last-name">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="register-last-name-addon">
+                                    <span class=" glyphicon glyphicon-edit"></span>
+                                </span>
+                                <input type="username" id="register-last-name" name="lastName" class="form-control" describedby="register-last-name-addon" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="register-username">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="register-username-addon">
+                            <span class=" glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="username" id="register-username" name="username" class="form-control" describedby="register-username-addon" placeholder="Username">
+                    </div>
+
+                    <label for="register-password">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="register-password-addon">
+                            <span class=" glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" id="register-password" name="password" class="form-control" describedby="register-password-addon" placeholder="Password">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="register-category">Category</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="register-category-addon">
+                                    <span class=" glyphicon glyphicon-tasks"></span>
+                                </span>
+                                <select name="category" class="form-control" id="register-category" describedby="register-category-addon">
+                                    <option value="-1">All Categories</option>
+                                    <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="register-total">Total Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input id="register-total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="20" disabled>
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Create Account</button>
+            </div>
+
+        </div>
+    </div>
+</div>

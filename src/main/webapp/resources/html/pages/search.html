@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Online Books <br/><small>Share your knowledge, it's a way to become immortal</small></h2>
+    </div>
+</div>
+<div class="row makeitboxy">
+    <div class="input-group main-search-input">
+        <input type="text" class="form-control" placeholder="Enter book name..." ng-model="searchInput">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+    <div class="col-md-3 padding-right-none">
+        <div class="panel panel-default">
+            <div class="panel-heading">Categories</div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="category in categories">
+                    <span class="badge">14</span>
+                    {{ category.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">Available Books</div>
+            <table class="table table-striped">
+                <tbody>
+                <tr ng-repeat="book in books | filter:searchInput">
+                    <td>{{ book.title }}, {{ book.author }}</td>
+                    <td style="width:100px;text-align:right;">
+                        <a href="#" class="btn btn-primary btn-xs" role="button">
+                            <span class="glyphicon glyphicon-download-alt"></span> Download
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
