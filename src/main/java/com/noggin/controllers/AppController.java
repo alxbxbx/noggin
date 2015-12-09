@@ -1,16 +1,15 @@
 package com.noggin.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
+public class AppController {
 
 	@RequestMapping("/")
-	public String index(Model model) {
-	
-		return "index";
+	public String app() {
+
+		return "app";
 	}
 
 }

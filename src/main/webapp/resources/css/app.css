@@ -55,3 +55,7 @@ h2, h2 small {
 .padding-right-none {
 	padding-right:0;
 }
+
+#registerModal .input-group {
+	margin-bottom:10px;
+}

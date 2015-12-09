@@ -1,0 +1,34 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-login" action="login" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="login-username-addon">
+                            <span class=" glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="username" name="username" class="form-control" describedby="login-username-addon"
+                               placeholder="Username">
+                    </div>
+                    <div class="input-group">
+								<span class="input-group-addon" id="login-password-addon">
+									<span class=" glyphicon glyphicon-lock"></span>
+								</span>
+                        <input type="password" name="password" class="form-control" describedby="login-password-addon"
+                               placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">login?</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Authenticate</button>
+            </div>
+        </div>
+    </div>
+</div>
