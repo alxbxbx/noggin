@@ -12,13 +12,15 @@
     
 	<context:component-scan base-package="com.noggin.controllers" />
 	<context:component-scan base-package="com.noggin.rest" />
-	<context:component-scan base-package="com.noggin.dao.repositories" />
+	
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	<bean class="com.noggin.dao.config.PersistenceConfig">
+	</bean>
 	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="0"/>
 
 	<mvc:annotation-driven />

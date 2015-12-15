@@ -1,6 +1,7 @@
 package com.noggin.dao.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +12,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories("com.noggin.dao.repositories")
+@EnableJpaRepositories({"com.noggin.dao.repositories"})
 @EnableTransactionManagement
-@ComponentScan("com.noggin")
+@ComponentScan({"com.noggin"})
 public class PersistenceConfig {
 	
 	  @Bean
@@ -29,28 +31,43 @@ public class PersistenceConfig {
 	      dataSource.setPassword("");
 	      return dataSource;
 	  }
+	  
+	  @Bean
+	    public HibernatePersistence persistenceProvider() {
+	        return new HibernatePersistence();
+	    }
 
 	  @Bean
-	  public EntityManagerFactory entityManagerFactory() {
+	  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
 	    HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 	    vendorAdapter.setGenerateDdl(true);
+	    vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
 
 	    LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-	    factory.setJpaVendorAdapter(vendorAdapter);
-	    factory.setPackagesToScan("com.noggin.models");
+	    factory.setPackagesToScan(new String[] { "com.noggin.models" });
 	    factory.setDataSource(dataSource());
-	    factory.afterPropertiesSet();
-
-	    return factory.getObject();
+	    factory.setPersistenceProvider(persistenceProvider());
+	    factory.setJpaVendorAdapter(vendorAdapter);
+	    
+	    
+	    
+	    final Properties hibernateProperties = new Properties();
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        hibernateProperties.setProperty("hibernate.show_sql", "true");
+        
+	    factory.setJpaProperties(hibernateProperties);
+	    return factory;
 	  }
 
 	  @Bean
 	  public PlatformTransactionManager transactionManager() {
 
 	    JpaTransactionManager txManager = new JpaTransactionManager();
-	    txManager.setEntityManagerFactory(entityManagerFactory());
+	    txManager.setEntityManagerFactory(entityManagerFactory().getObject());
 	    return txManager;
 	  }
+	  
 
 }
