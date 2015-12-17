@@ -4,6 +4,7 @@
 .settings
 /bin/
 /src/main/resources/hibernate.cfg.xml
+/src/main/resources/application.properties
 
 .idea
 *.iml
