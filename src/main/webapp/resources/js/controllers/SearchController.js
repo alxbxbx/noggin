@@ -13,6 +13,6 @@ app.controller('SearchController', ['$scope', 'bookFactory', 'categoryFactory', 
         $scope.categories = data;
     });
 
-    loginService.post("filip01", "8439063th");
+    loginService.login();
 
 }]);

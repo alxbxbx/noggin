@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-    public User post() {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public User login() {
 
-        User user = new User();
-        user.setUsername("dick");
-        user.setPassword("dick123");
+        User user = null;
+
+        user = new User();
+        user.setUsername("filip01");
+        user.setPassword("nh2b09825");
 
         return user;
     }
