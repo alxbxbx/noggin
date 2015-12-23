@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="/resources/css/libs/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="/resources/css/app.css">
 	</head>
-	<body>
+	<body ng-controller="AppController">
 
 		<div ng-include="'/resources/html/modals/login.html'"></div>
 
@@ -34,12 +34,13 @@
 
 		<script type="text/javascript" src="/resources/js/app.js"></script>
 
+		<script type="text/javascript" src="/resources/js/controllers/AppController.js"></script>
 		<script type="text/javascript" src="/resources/js/controllers/SearchController.js"></script>
 
 		<script type="text/javascript" src="/resources/js/factories/BookFactory.js"></script>
 		<script type="text/javascript" src="/resources/js/factories/CategoryFactory.js"></script>
 
 		<script type="text/javascript" src="/resources/js/services/SessionService.js"></script>
-		<script type="text/javascript" src="/resources/js/services/LoginService.js"></script>
+		<script type="text/javascript" src="/resources/js/services/AuthService.js"></script>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SearchController', ['$scope', 'bookFactory', 'categoryFactory', 'loginService', function ($scope, bookFactory, categoryFactory, loginService) {
+app.controller('SearchController', ['$scope', 'bookFactory', 'categoryFactory', function ($scope, bookFactory, categoryFactory) {
 
     $scope.books = [];
     $scope.categories = [];
@@ -12,7 +12,5 @@ app.controller('SearchController', ['$scope', 'bookFactory', 'categoryFactory', 
     categoryFactory.getAll().success(function (data) {
         $scope.categories = data;
     });
-
-    loginService.login();
 
 }]);
