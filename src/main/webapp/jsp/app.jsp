@@ -31,9 +31,15 @@
 		<script type="text/javascript" src="/resources/js/libs/angular-route.min.js"></script>
 		<script type="text/javascript" src="/resources/js/libs/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="/resources/js/libs/bootstrap.min.js"></script>
+
 		<script type="text/javascript" src="/resources/js/app.js"></script>
+
 		<script type="text/javascript" src="/resources/js/controllers/SearchController.js"></script>
+
 		<script type="text/javascript" src="/resources/js/factories/BookFactory.js"></script>
 		<script type="text/javascript" src="/resources/js/factories/CategoryFactory.js"></script>
+
+		<script type="text/javascript" src="/resources/js/services/SessionService.js"></script>
+		<script type="text/javascript" src="/resources/js/services/LoginService.js"></script>
 	</body>
 </html>
