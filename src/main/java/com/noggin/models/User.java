@@ -1,11 +1,21 @@
 package com.noggin.models;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Proxy;
 
 @Entity
 @Table(name="user")
-public class User {
+@Proxy(lazy = false)
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue
 	@Column(name="id")
 	private Integer id;
@@ -25,7 +35,7 @@ public class User {
 	@Column(name="type")
 	private String type;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="category_id", nullable = true)
 	private Category category;
 	

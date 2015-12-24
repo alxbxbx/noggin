@@ -1,9 +1,16 @@
 package com.noggin.models;
+import java.io.Serializable;
+
 import javax.persistence.*;
 @Entity
 @Table(name="language")
-public class Language {
+public class Language implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue
 	@Column(name="id")
 	private Integer id;

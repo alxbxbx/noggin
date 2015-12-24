@@ -26,7 +26,7 @@ public class CategoryController {
        
         return list;
     }
-    @RequestMapping(value= "/category/{id}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value= "/category/{id}", method = RequestMethod.PUT, consumes = "application/json")
     public ResponseEntity<Category> update(@PathVariable String id, @RequestBody Category category){
     	Category cat = new Category();
     	Integer intId = null;
