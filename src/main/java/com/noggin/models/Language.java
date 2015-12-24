@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 @Entity
-@Table(name="language")
+@Table(name="languages")
 public class Language implements Serializable{
 	
 	/**

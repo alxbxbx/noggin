@@ -7,7 +7,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.Proxy;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 @Proxy(lazy = false)
 public class User implements Serializable{
 	
