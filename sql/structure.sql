@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `book`
+-- Table structure for table `books`
 --
 
-DROP TABLE IF EXISTS `book`;
+DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `book` (
+CREATE TABLE `books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(255) DEFAULT NULL,
   `filename` varchar(255) NOT NULL,
@@ -33,6 +33,8 @@ CREATE TABLE `book` (
   `language_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `path` varchar(255) NOT NULL,
+  `temp` int(1) NOT NULL,
+  `created_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKam9riv8y6rjwkua1gapdfew4j` (`category_id`),
   KEY `FKmrhfp9wfi5dy4bwl87bx8ivua` (`language_id`),
@@ -41,13 +43,13 @@ CREATE TABLE `book` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -67,13 +69,13 @@ CREATE TABLE `hibernate_sequence` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `language`
+-- Table structure for table `languages`
 --
 
-DROP TABLE IF EXISTS `language`;
+DROP TABLE IF EXISTS `languages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `language` (
+CREATE TABLE `languages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -81,13 +83,13 @@ CREATE TABLE `language` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -109,4 +111,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-24 19:38:52
+-- Dump completed on 2015-12-24 20:24:31

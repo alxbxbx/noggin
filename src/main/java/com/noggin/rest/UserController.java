@@ -67,8 +67,7 @@ public class UserController {
     	u.setUsername(user.getUsername());
     	u.setLastName(user.getLastName());
     	u.setType(user.getType());
-    	iu.save(u);
-    	return new ResponseEntity<User>(u,HttpStatus.OK);
+    	return new ResponseEntity<User>(iu.save(u),HttpStatus.OK);
     }
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")
