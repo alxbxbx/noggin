@@ -37,6 +37,12 @@ public class Book implements Serializable{
 	@Column(name = "path")
 	private String path;
 	
+	@Column(name = "temp")
+	private Integer temp;
+	
+	@Column(name = "created_at")
+	private Long createdAt;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="category_id", nullable = false)
 	private Category category;
@@ -52,7 +58,7 @@ public class Book implements Serializable{
 	public Book(){}
 	
 	public Book(Integer id, String title, String author, String keywords, Integer publicationYear, String filename,
-			Category category, Language language, User user, String path) {
+			Category category, Language language, User user, String path, Integer temp, Long createdAt) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -64,9 +70,27 @@ public class Book implements Serializable{
 		this.language = language;
 		this.user = user;
 		this.path = path;
+		this.temp = temp;
+		this.createdAt = createdAt;
 	}
 	
 	
+	public Integer getTemp() {
+		return temp;
+	}
+
+	public void setTemp(Integer temp) {
+		this.temp = temp;
+	}
+
+	public Long getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Long createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	public String getPath() {
 		return path;
 	}
