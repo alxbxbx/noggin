@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(255) DEFAULT NULL,
   `filename` varchar(255) NOT NULL,
   `keywords` varchar(255) DEFAULT NULL,
@@ -36,10 +36,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `FKam9riv8y6rjwkua1gapdfew4j` (`category_id`),
   KEY `FKmrhfp9wfi5dy4bwl87bx8ivua` (`language_id`),
-  KEY `FK1wxwagv6cm3vjrxqhmv884hir` (`user_id`),
-  CONSTRAINT `FK1wxwagv6cm3vjrxqhmv884hir` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `FKam9riv8y6rjwkua1gapdfew4j` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
-  CONSTRAINT `FKmrhfp9wfi5dy4bwl87bx8ivua` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`)
+  KEY `FK1wxwagv6cm3vjrxqhmv884hir` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,10 +48,10 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +74,7 @@ DROP TABLE IF EXISTS `language`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `language` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91,7 +88,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -99,9 +96,8 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKrfbnkwm509b3phkmoyelw86el` (`category_id`),
-  CONSTRAINT `FKrfbnkwm509b3phkmoyelw86el` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FKrfbnkwm509b3phkmoyelw86el` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -113,4 +109,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-24 19:29:22
+-- Dump completed on 2015-12-24 19:38:52
