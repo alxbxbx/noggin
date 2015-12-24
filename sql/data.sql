@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `categories`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (10,'Akcija'),(8,'Autobiografija'),(7,'Avanturisticki'),(1,'Drama'),(5,'Fantastik'),(9,'Horor'),(3,'Istorijski'),(4,'Ljubavni'),(6,'Poezija'),(2,'Triler');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (10,'Akcija'),(8,'Autobiografija'),(7,'Avanturisticki'),(1,'Drama'),(5,'Fantastik'),(9,'Horor'),(3,'Istorijski'),(4,'Ljubavni'),(6,'Poezija'),(2,'Triler');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

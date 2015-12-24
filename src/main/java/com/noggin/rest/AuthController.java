@@ -22,11 +22,9 @@ public class AuthController {
                 // start session
                 dbUser.setPassword("");
                 finalUser = dbUser;
-                System.out.println("1) I was here.");
                 break;
             }
         }
-        System.out.println("2) I was here.");
         return finalUser;
     }
 
