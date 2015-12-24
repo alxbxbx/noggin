@@ -1,23 +1,27 @@
 package com.noggin.rest;
 
 import com.noggin.models.User;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class LoginController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User login() {
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
+    public User login(@RequestBody User user) {
+        if (user.getUsername().equals("firge") && user.getPassword().equals("firge")) {
+            return user;
+        } else {
+            return null;
+        }
+    }
 
-        User user = null;
-
-        user = new User();
-        user.setUsername("filip01");
-        user.setPassword("nh2b09825");
-
+    @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = "application/json")
+    public User logout(@RequestBody User user) {
         return user;
+        // else return null
     }
 
 }
