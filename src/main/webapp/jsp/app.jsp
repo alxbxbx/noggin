@@ -38,9 +38,8 @@
 		<script type="text/javascript" src="/resources/js/controllers/SearchController.js"></script>
 
 		<script type="text/javascript" src="/resources/js/factories/BookFactory.js"></script>
-		<script type="text/javascript" src="/resources/js/factories/CategoryFactory.js"></script>
+        <script type="text/javascript" src="/resources/js/factories/CategoryFactory.js"></script>
+        <script type="text/javascript" src="/resources/js/factories/UserFactory.js"></script>
 
-		<script type="text/javascript" src="/resources/js/services/SessionService.js"></script>
-		<script type="text/javascript" src="/resources/js/services/AuthService.js"></script>
 	</body>
 </html>

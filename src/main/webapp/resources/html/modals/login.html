@@ -12,14 +12,14 @@
                         <span class="input-group-addon" id="login-username-addon">
                             <span class=" glyphicon glyphicon-user"></span>
                         </span>
-                        <input type="username" name="username" class="form-control" describedby="login-username-addon"
+                        <input ng-model="login_username" type="username" name="username" class="form-control" describedby="login-username-addon"
                                placeholder="Username">
                     </div>
                     <div class="input-group">
 								<span class="input-group-addon" id="login-password-addon">
 									<span class=" glyphicon glyphicon-lock"></span>
 								</span>
-                        <input type="password" name="password" class="form-control" describedby="login-password-addon"
+                        <input ng-model="login_password" type="password" name="password" class="form-control" describedby="login-password-addon"
                                placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-default">login?</button>
@@ -27,7 +27,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="login('firge', 'firge')">Authenticate</button>
+                <button type="button" class="btn btn-primary" ng-click="login(login_username, login_password)">Authenticate</button>
             </div>
         </div>
     </div>

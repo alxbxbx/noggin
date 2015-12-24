@@ -11,6 +11,8 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
     public User login(@RequestBody User user) {
+        System.out.println("TRYING: " + user.getUsername());
+        System.out.println("TRYING: " + user.getPassword());
         if (user.getUsername().equals("firge") && user.getPassword().equals("firge")) {
             return user;
         } else {

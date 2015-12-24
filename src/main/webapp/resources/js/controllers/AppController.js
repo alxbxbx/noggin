@@ -1,9 +1,11 @@
 'use strict';
 
-app.controller('AppController', ['$scope', 'authService', function ($scope, authService) {
+app.controller('AppController', ['$scope', 'userFactory', function ($scope, userFactory) {
 
     $scope.login = function(username, password) {
-        authService.login(username, password);
+        userFactory.getAll.success(function(users) {
+            // for loop
+        });
     };
 
 }]);
