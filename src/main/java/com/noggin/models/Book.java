@@ -1,10 +1,20 @@
 package com.noggin.models;
+import java.io.Serializable;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Proxy;
 
 @Entity
 @Table(name="book")
-public class Book {
+@Proxy(lazy = false)
+public class Book implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue
 	@Column(name="id")
 	private Integer id;
@@ -24,22 +34,25 @@ public class Book {
 	@Column(name="filename")
 	private String filename;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name = "path")
+	private String path;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="category_id", nullable = false)
 	private Category category;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="language_id", nullable = false)
 	private Language language;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id", nullable = false)
 	private User user;
 	
 	public Book(){}
 	
 	public Book(Integer id, String title, String author, String keywords, Integer publicationYear, String filename,
-			Category category, Language language, User user) {
+			Category category, Language language, User user, String path) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -50,8 +63,18 @@ public class Book {
 		this.category = category;
 		this.language = language;
 		this.user = user;
+		this.path = path;
 	}
 	
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	public String getFilename() {
 		return filename;
 	}

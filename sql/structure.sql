@@ -25,13 +25,14 @@ DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `id` int(11) NOT NULL,
   `author` varchar(255) DEFAULT NULL,
-  `filename` varchar(255) DEFAULT NULL,
+  `filename` varchar(255) NOT NULL,
   `keywords` varchar(255) DEFAULT NULL,
   `publication_year` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKam9riv8y6rjwkua1gapdfew4j` (`category_id`),
   KEY `FKmrhfp9wfi5dy4bwl87bx8ivua` (`language_id`),
@@ -94,7 +95,7 @@ CREATE TABLE `user` (
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `type` int(1) NOT NULL,
   `username` varchar(255) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -112,4 +113,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-24  1:04:07
+-- Dump completed on 2015-12-24 19:29:22
