@@ -48,6 +48,34 @@ public class PDFHandler extends DocumentHandler {
 
 		return doc;
 	}
+	public Document changeKeywords(File file, String keywords) {
+		Document doc = new Document();
+		try {
+			PDFParser parser = new PDFParser(new FileInputStream(file));
+			parser.parse();
+			String text = getText(parser);
+			doc.add(new TextField("text", text, Store.YES));
+
+			// metadata extraction
+			PDDocument pdf = parser.getPDDocument();
+			PDDocumentInformation info = pdf.getDocumentInformation();
+
+			String title = ""+info.getTitle();
+			doc.add(new TextField("title", title, Store.YES));
+
+			doc.add(new TextField("keyword", keywords, Store.YES));
+			
+			doc.add(new StringField("filename", file.getCanonicalPath(),
+					Store.YES));
+			
+			pdf.close();
+		} catch (IOException e) {
+			System.out.println("Greksa pri konvertovanju dokumenta u pdf");
+		}
+
+		return doc;
+	}
+	
 
 	@Override
 	public String getText(File file) {

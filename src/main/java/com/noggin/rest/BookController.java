@@ -10,7 +10,11 @@ import java.util.ResourceBundle;
 
 import javax.servlet.annotation.MultipartConfig;
 
+
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.document.Field.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -92,9 +96,10 @@ public class BookController {
 				e.printStackTrace();
 			}
 		}
-		Indexer.getInstance().index(outputFile);
+		
 		PDFHandler handler = new PDFHandler();
 		Document doc = handler.getDocument(outputFile);
+		Indexer.getInstance().index(outputFile);
 		
 		Book book = new Book();
 		book.setFilename(fileName);
@@ -147,6 +152,8 @@ public class BookController {
 			reader.close();
 			writer.close();
 			
+			Indexer.getInstance().index(storedFile);
+			
 			tempFile.delete();
 		}catch(IOException e){
 			e.printStackTrace();
@@ -179,7 +186,6 @@ public class BookController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json")
 	public ResponseEntity<Book> book(@PathVariable String id, @RequestBody Book book){
 		
-		// nije dovrsen, fali menjanje KEYWORDS u samom PDFu
 		Book b = new Book();
 		Integer intId = null;
 		try{
@@ -198,6 +204,10 @@ public class BookController {
 		b.setTitle(book.getTitle());
 		
 		//Update PDF
+		TextField tf = new TextField("keywords", b.getKeywords(), Store.YES);
+		List<IndexableField> fields = new ArrayList<IndexableField>();
+		fields.add(tf);
+		Indexer.getInstance().updateDocument(b.getFilename(), fields);
 		
 		
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);

@@ -64,7 +64,7 @@ public class Indexer {
 	 * Direktorijum u kojem ce se indeks nalaziti se ucitava iz <i>app.properties</i> datoteke
 	 */
 	private Indexer(boolean restart){
-		this(ResourceBundle.getBundle("app").getString("index"), restart);
+		this(ResourceBundle.getBundle("application").getString("index"), restart);
 	}
 	
 	private Indexer(){
