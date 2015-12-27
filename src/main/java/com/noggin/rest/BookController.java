@@ -160,6 +160,19 @@ public class BookController {
 			return new ResponseEntity<Book>(HttpStatus.CONFLICT);
 		}
 		b.setPath(storagePath);
+		
+		//Update PDF info
+		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
+		TextField author = new TextField("author", b.getAuthor(), Store.YES);
+		TextField title = new TextField("title", b.getTitle(), Store.YES);
+		TextField filename = new TextField("filename", b.getFilename(), Store.YES);
+		List<IndexableField> fields = new ArrayList<IndexableField>();
+		fields.add(keywords);
+		fields.add(author);
+		fields.add(title);
+		fields.add(filename);
+		Indexer.getInstance().updateDocument(b.getFilename(), fields);
+		
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
 	
@@ -204,9 +217,15 @@ public class BookController {
 		b.setTitle(book.getTitle());
 		
 		//Update PDF
-		TextField tf = new TextField("keywords", b.getKeywords(), Store.YES);
+		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
+		TextField author = new TextField("author", b.getAuthor(), Store.YES);
+		TextField title = new TextField("title", b.getTitle(), Store.YES);
+		TextField filename = new TextField("filename", b.getFilename(), Store.YES);
 		List<IndexableField> fields = new ArrayList<IndexableField>();
-		fields.add(tf);
+		fields.add(keywords);
+		fields.add(author);
+		fields.add(title);
+		fields.add(filename);
 		Indexer.getInstance().updateDocument(b.getFilename(), fields);
 		
 		

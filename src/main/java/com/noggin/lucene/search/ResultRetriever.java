@@ -21,8 +21,8 @@ import org.apache.lucene.store.SimpleFSDirectory;
 import com.noggin.lucene.analysers.SerbianAnalyzer;
 import com.noggin.lucene.handlers.DocumentHandler;
 import com.noggin.lucene.handlers.PDFHandler;
-import com.noggin.lucene.models.RequiredHighlight;
-import com.noggin.lucene.models.ResultData;
+import com.noggin.lucene.model.RequiredHighlight;
+import com.noggin.lucene.model.ResultData;
 
 public class ResultRetriever {
 	
