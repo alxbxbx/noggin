@@ -6,6 +6,32 @@
 <div class="row makeitboxy" style="padding-left:10px;padding-right:10px;">
     <div class="row">
         <div class="col-lg-12">
+
+            <label for="upload-category">Pick Category</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="upload-category-addon">
+                    <span class=" glyphicon glyphicon-tasks"></span>
+                </span>
+                <select ng-selected="0" name="upload_category" ng-model="upload_category" class="form-control" id="upload-category" describedby="upload-category-addon">
+                    <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
+                </select>
+            </div>
+
+            <label for="upload-language">Book Language</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="upload-language-addon">
+                    <span class=" glyphicon glyphicon-tasks"></span>
+                </span>
+                <select ng-model="upload_language"
+                        ng-options="language.id as language.name for language in languages"
+                        name="upload_language"
+                        class="form-control"
+                        id="upload-language"
+                        describedby="upload-language-text-size">
+                    <!-- <option ng-repeat="language in languages" value="{{ language.id }}">{{ language.name }}</option> -->
+                </select>
+            </div>
+
             <div ngf-drop ngf-select ng-model="file" class="drop-box"
                  ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
                  accept="application/pdf"
@@ -14,6 +40,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
+            {{ upload_category }}<br/>
+            {{ upload_language }}<br/>
             {{ file.name }} {{ file.$error }} {{ file.$errorParam }}
         </div>
     </div>

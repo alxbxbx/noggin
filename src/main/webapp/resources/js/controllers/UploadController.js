@@ -1,6 +1,15 @@
 'use strict';
 
-app.controller('UploadController', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFactory', 'languageFactory',
+    function ($scope, Upload, $timeout, categoryFactory, languageFactory) {
+
+    categoryFactory.getAll().success(function (data) {
+        $scope.categories = data;
+    });
+
+    languageFactory.getAll().success(function (data) {
+        $scope.languages = data;
+    });
 
     $scope.$watch('file', function() {
         $scope.upload($scope.file);
@@ -8,13 +17,19 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', function ($s
 
     $scope.log = '';
 
-    $scope.upload = function(file) {
+    $scope.upload = function(file, languageId, categoryId) {
         console.log(file);
+        console.log("Language: " + $scope.upload_language);
+        console.log("Category: " + $scope.upload_category);
+        console.log("User: " + sessionStorage.getItem("auth_id"));
         if (!file.$error) {
             Upload.upload({
                 url: '/book',
                 data: {
-                    file: file
+                    file: file,
+                    languageId: languageId,
+                    categoryId: categoryId,
+                    userId: sessionStorage.getItem("auth_id")
                 }
             }).progress(function (event) {
                 var progressPercentage = parseInt(100.0 * event.loaded / event.total);

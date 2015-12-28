@@ -43,6 +43,7 @@
         <script type="text/javascript" src="/resources/js/factories/BookFactory.js"></script>
         <script type="text/javascript" src="/resources/js/factories/CategoryFactory.js"></script>
         <script type="text/javascript" src="/resources/js/factories/UserFactory.js"></script>
+        <script type="text/javascript" src="/resources/js/factories/LanguageFactory.js"></script>
 
 		<script type="text/javascript" src="/resources/js/controllers/AppController.js"></script>
 		<script type="text/javascript" src="/resources/js/controllers/SearchController.js"></script>
