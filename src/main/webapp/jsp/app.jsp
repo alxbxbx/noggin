@@ -12,7 +12,8 @@
 	<body ng-controller="AppController">
 
 		<div ng-include="'/resources/html/modals/login.html'"></div>
-
+		<div ng-include="'/resources/html/modals/change_password.html'"></div>
+		<div ng-include="'/resources/html/modals/edit_profile.html'"></div>
 		<div ng-include="'/resources/html/modals/register.html'"></div>
 
 		<div id="headground"></div>
@@ -42,6 +43,9 @@
 
 		<script type="text/javascript" src="/resources/js/controllers/AppController.js"></script>
 		<script type="text/javascript" src="/resources/js/controllers/SearchController.js"></script>
+        <script type="text/javascript" src="/resources/js/controllers/ManageBooksController.js"></script>
+        <script type="text/javascript" src="/resources/js/controllers/ManageUsersController.js"></script>
+        <script type="text/javascript" src="/resources/js/controllers/ManageCategoriesController.js"></script>
 
 	</body>
 </html>

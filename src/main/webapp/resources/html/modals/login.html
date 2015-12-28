@@ -1,31 +1,33 @@
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Login</h4>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
-                    <span class="input-group-addon" id="login-username-addon">
-                        <span class=" glyphicon glyphicon-user"></span>
-                    </span>
-                    <input ng-model="login_username" type="username" name="username" class="form-control" describedby="login-username-addon"
-                           placeholder="Username">
+            <form novalidate>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Login</h4>
                 </div>
-                <div class="input-group">
-                            <span class="input-group-addon" id="login-password-addon">
-                                <span class=" glyphicon glyphicon-lock"></span>
-                            </span>
-                    <input ng-model="login_password" type="password" name="password" class="form-control" describedby="login-password-addon"
-                           placeholder="Password">
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="login-username-addon">
+                            <span class=" glyphicon glyphicon-user"></span>
+                        </span>
+                        <input ng-model="login_username" type="username" name="username" class="form-control" describedby="login-username-addon"
+                               placeholder="Username">
+                    </div>
+                    <div class="input-group">
+                                <span class="input-group-addon" id="login-password-addon">
+                                    <span class=" glyphicon glyphicon-lock"></span>
+                                </span>
+                        <input ng-model="login_password" type="password" name="password" class="form-control" describedby="login-password-addon"
+                               placeholder="Password">
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="login(login_username, login_password)">Authenticate</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="login(login_username, login_password)">Authenticate</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -29,8 +29,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = "application/json")
-    public User logout(@RequestBody User user) {
-        return user;
+    public void logout() {
         // else return null
     }
 
