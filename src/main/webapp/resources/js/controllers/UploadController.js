@@ -27,8 +27,8 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFac
                 url: '/book',
                 data: {
                     file: file,
-                    languageId: languageId,
-                    categoryId: categoryId,
+                    languageId: $scope.upload_language,
+                    categoryId: $scope.upload_category,
                     userId: sessionStorage.getItem("auth_id")
                 }
             }).progress(function (event) {
