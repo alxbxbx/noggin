@@ -5,6 +5,13 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.Proxy;
 
+/*
+ * temp meaning:
+ * 0 - is not temp
+ * 1 - is temp
+ * 
+ * */
+
 @Entity
 @Table(name="books")
 @Proxy(lazy = false)
@@ -41,24 +48,24 @@ public class Book implements Serializable{
 	private Integer temp;
 	
 	@Column(name = "created_at")
-	private Long createdAt;
+	private String createdAt;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="category_id", nullable = false)
+	@JoinColumn(name="category_id", referencedColumnName="id", nullable = false)
 	private Category category;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="language_id", nullable = false)
+	@JoinColumn(name="language_id", referencedColumnName="id", nullable = false)
 	private Language language;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="user_id", nullable = false)
+	@JoinColumn(name="user_id", referencedColumnName="id", nullable = false)
 	private User user;
 	
 	public Book(){}
 	
 	public Book(Integer id, String title, String author, String keywords, Integer publicationYear, String filename,
-			Category category, Language language, User user, String path, Integer temp, Long createdAt) {
+			Category category, Language language, User user, String path, Integer temp, String createdAt) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -82,12 +89,13 @@ public class Book implements Serializable{
 	public void setTemp(Integer temp) {
 		this.temp = temp;
 	}
+	
 
-	public Long getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Long createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 

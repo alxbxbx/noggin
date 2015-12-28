@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 
 import javax.servlet.annotation.MultipartConfig;
 
-
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexableField;
@@ -30,95 +29,110 @@ import com.noggin.dao.repositories.IBook;
 import com.noggin.lucene.handlers.PDFHandler;
 import com.noggin.lucene.indexing.Indexer;
 import com.noggin.models.Book;
+import com.noggin.models.Category;
+import com.noggin.models.Language;
+import com.noggin.models.User;
 
 @RestController
 @RequestMapping(value = "book")
 @MultipartConfig(fileSizeThreshold = 20971520)
 public class BookController {
-	
+
 	@Autowired
 	private IBook ib;
-	
+
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
-	public List<Book> getAll(){
+	public List<Book> getAll() {
 		List<Book> books = new ArrayList<Book>();
 		books = ib.findAll();
-		
+
 		return books;
 	}
-	
-	@RequestMapping(value="/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Book> get(@PathVariable String id){
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<Book> get(@PathVariable String id) {
 		Integer intId = null;
 		Book book = null;
-		try{
+		try {
 			intId = Integer.parseInt(id);
 			book = ib.findOne(intId);
-		}catch (Exception e){
+		} catch (Exception e) {
 			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
-		
+
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Book> returnKeywords(@RequestParam("file") MultipartFile uploadedPDF){
-		
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Book> returnKeywords(@RequestParam("file") MultipartFile uploadedPDF,
+			@RequestParam("languageId") String lanId, @RequestParam("categoryId") String catId,
+			@RequestParam("userId") String userId) {
+
 		String storagePath = ResourceBundle.getBundle("application").getString("temp");
 		String fileName = uploadedPDF.getOriginalFilename();
 		fileName = System.currentTimeMillis() + ".pdf";
 		storagePath += fileName;
-		
+
 		byte[] buffer = new byte[1000];
-		
+
 		File outputFile = new File(storagePath);
-		
+
 		FileInputStream reader = null;
 		FileOutputStream writer = null;
 		int totalBytes = 0;
-		
-		try{
+
+		try {
 			reader = (FileInputStream) uploadedPDF.getInputStream();
 			writer = new FileOutputStream(outputFile);
 			int bytesRead = 0;
-			
-			while((bytesRead = reader.read(buffer)) != -1){
+
+			while ((bytesRead = reader.read(buffer)) != -1) {
 				writer.write(buffer);
 				totalBytes += bytesRead;
 			}
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
-			try{
+		} finally {
+			try {
 				reader.close();
 				writer.close();
-			}catch(IOException e){
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		PDFHandler handler = new PDFHandler();
 		Document doc = handler.getDocument(outputFile);
 		Indexer.getInstance().index(outputFile);
-		
+
 		Book book = new Book();
 		book.setFilename(fileName);
 		book.setPath(storagePath);
 		book.setTitle(doc.get("title"));
 		book.setKeywords(doc.get("keyword"));
-		book.setCreatedAt(System.currentTimeMillis());
-		
+		Long a = System.currentTimeMillis();
+		book.setCreatedAt(a.toString());
+		Integer categoryId = Integer.parseInt(catId);
+		Integer languageId = Integer.parseInt(lanId);
+		Integer userID = Integer.parseInt(userId);
+		book.getCategory().setId(categoryId);
+		book.getLanguage().setId(languageId);
+		book.getUser().setId(userID);
+		book.setTemp(1);
+
+
 		return new ResponseEntity<Book>(ib.save(book), HttpStatus.OK);
-		
+
 	}
-	@RequestMapping(value="/{id}", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Book> storeBook(@PathVariable String id, @RequestBody Book book){
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<Book> storeBook(@PathVariable String id, @RequestBody Book book) {
 		Integer intId = null;
 		Book b = new Book();
-		try{
+		try {
 			intId = Integer.parseInt(id);
 			b = ib.findOne(intId);
-		}catch (Exception e){
+		} catch (Exception e) {
 			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		}
 		b.setAuthor(book.getAuthor());
@@ -128,40 +142,41 @@ public class BookController {
 		b.setPublicationYear(book.getPublicationYear());
 		b.setTitle(book.getTitle());
 		b.setUser(book.getUser());
-		
+		book.setTemp(0);
+
 		String storagePath = ResourceBundle.getBundle("application").getString("storage");
 		storagePath += b.getFilename();
-			
+
 		FileInputStream reader = null;
 		FileOutputStream writer = null;
-		
-		try{
+
+		try {
 			File tempFile = new File(b.getPath());
 			File storedFile = new File(storagePath);
-			
+
 			reader = new FileInputStream(tempFile);
 			writer = new FileOutputStream(storedFile);
-			
+
 			byte[] buffer = new byte[1024];
-			
+
 			int length;
-			
-			while((length = reader.read(buffer)) > 0){
+
+			while ((length = reader.read(buffer)) > 0) {
 				writer.write(buffer, 0, length);
 			}
 			reader.close();
 			writer.close();
-			
+
 			Indexer.getInstance().index(storedFile);
-			
+
 			tempFile.delete();
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 			return new ResponseEntity<Book>(HttpStatus.CONFLICT);
 		}
 		b.setPath(storagePath);
-		
-		//Update PDF info
+
+		// Update PDF info
 		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
 		TextField author = new TextField("author", b.getAuthor(), Store.YES);
 		TextField title = new TextField("title", b.getTitle(), Store.YES);
@@ -172,51 +187,51 @@ public class BookController {
 		fields.add(title);
 		fields.add(filename);
 		Indexer.getInstance().updateDocument(b.getFilename(), fields);
-		
+
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")
-	public ResponseEntity<Book> book(@PathVariable String id){
+	public ResponseEntity<Book> book(@PathVariable String id) {
 		Integer intId = null;
-		try{
+		try {
 			intId = Integer.parseInt(id);
 			Book book = new Book();
 			book = ib.findOne(intId);
-			
-			//File system delete
+
+			// File system delete
 			File bookFile = new File(book.getPath());
 			bookFile.delete();
-			
-			//Database file delete
+
+			// Database file delete
 			ib.delete(book);
-		}catch (Exception e){
+		} catch (Exception e) {
 			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Book>(HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<Book> book(@PathVariable String id, @RequestBody Book book){
-		
+	public ResponseEntity<Book> book(@PathVariable String id, @RequestBody Book book) {
+
 		Book b = new Book();
 		Integer intId = null;
-		try{
+		try {
 			intId = Integer.parseInt(id);
 			b = ib.findOne(intId);
-		}catch (Exception e){
+		} catch (Exception e) {
 			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		}
-		
-		//Update book
+
+		// Update book
 		b.setAuthor(book.getAuthor());
 		b.setCategory(book.getCategory());
 		b.setKeywords(book.getKeywords());
 		b.setLanguage(book.getLanguage());
 		b.setPublicationYear(book.getPublicationYear());
 		b.setTitle(book.getTitle());
-		
-		//Update PDF
+
+		// Update PDF
 		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
 		TextField author = new TextField("author", b.getAuthor(), Store.YES);
 		TextField title = new TextField("title", b.getTitle(), Store.YES);
@@ -227,13 +242,8 @@ public class BookController {
 		fields.add(title);
 		fields.add(filename);
 		Indexer.getInstance().updateDocument(b.getFilename(), fields);
-		
-		
+
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
-	
-	
-	
-	
 
 }

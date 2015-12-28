@@ -36,7 +36,7 @@ public class User implements Serializable{
 	private String type;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="category_id", nullable = true)
+	@JoinColumn(name="category_id", referencedColumnName="id", nullable = true)
 	private Category category;
 	
 	public User(){}
