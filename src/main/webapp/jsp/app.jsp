@@ -33,6 +33,9 @@
 		<script type="text/javascript" src="/resources/js/libs/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="/resources/js/libs/bootstrap.min.js"></script>
 
+        <script type="text/javascript" src="/resources/js/libs/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="/resources/js/libs/ng-file-upload.min.js"></script>
+
 		<script type="text/javascript" src="/resources/js/app.js"></script>
 
         <script type="text/javascript" src="/resources/js/services/AuthService.js"></script>
@@ -46,6 +49,7 @@
         <script type="text/javascript" src="/resources/js/controllers/ManageBooksController.js"></script>
         <script type="text/javascript" src="/resources/js/controllers/ManageUsersController.js"></script>
         <script type="text/javascript" src="/resources/js/controllers/ManageCategoriesController.js"></script>
+        <script type="text/javascript" src="/resources/js/controllers/UploadController.js"></script>
 
 	</body>
 </html>

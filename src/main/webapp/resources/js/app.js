@@ -1,7 +1,7 @@
 'use strict';
 
 // Angular Application Definition
-var app = angular.module('noggin', ['ngRoute']);
+var app = angular.module('noggin', ['ngRoute', 'ngFileUpload']);
 
 // Angular Routes
 app.config(['$routeProvider', function ($routeProvider) {
@@ -22,7 +22,11 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/resources/html/pages/manage_categories.html',
             controller: 'ManageCategoriesController'
         })
+        .when('/upload', {
+            templateUrl: '/resources/html/pages/upload.html',
+            controller: 'UploadController'
+        })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/upload'
         });
 }]);

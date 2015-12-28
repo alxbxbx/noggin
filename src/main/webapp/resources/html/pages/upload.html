@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Upload Book<br/><small>Upload new book to Noggin database</small></h2>
+    </div>
+</div>
+<div class="row makeitboxy" style="padding-left:10px;padding-right:10px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div ngf-drop ngf-select ng-model="file" class="drop-box"
+                 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+                 accept="application/pdf"
+                 ngf-pattern="'application/pdf'" ng-select="upload($file)">Drop PDF files here or click to upload...</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ file.name }} {{ file.$error }} {{ file.$errorParam }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <pre>{{ log }}</pre>
+        </div>
+    </div>
+</div>
