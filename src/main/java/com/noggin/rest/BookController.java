@@ -26,6 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.noggin.dao.repositories.IBook;
+import com.noggin.dao.repositories.ICategory;
+import com.noggin.dao.repositories.ILanguage;
+import com.noggin.dao.repositories.IUser;
 import com.noggin.lucene.handlers.PDFHandler;
 import com.noggin.lucene.indexing.Indexer;
 import com.noggin.models.Book;
@@ -40,6 +43,15 @@ public class BookController {
 
 	@Autowired
 	private IBook ib;
+	
+	@Autowired
+	private ICategory ic;
+	
+	@Autowired
+	private ILanguage il;
+	
+	@Autowired
+	private IUser iu;
 
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Book> getAll() {
@@ -115,9 +127,12 @@ public class BookController {
 		Integer categoryId = Integer.parseInt(catId);
 		Integer languageId = Integer.parseInt(lanId);
 		Integer userID = Integer.parseInt(userId);
-		book.getCategory().setId(categoryId);
-		book.getLanguage().setId(languageId);
-		book.getUser().setId(userID);
+		Category c = ic.findOne(categoryId);
+		Language l = il.findOne(languageId);
+		User u = iu.findOne(userID); 
+		book.setCategory(c);
+		book.setLanguage(l);
+		book.setUser(u);
 		book.setTemp(1);
 
 
