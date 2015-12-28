@@ -37,12 +37,14 @@ public class SearchController {
 				SearchType.Type textst = SearchType.getType(searchEntity.getTextST());
 				Query query = QueryBuilder.buildQuery(textst, "text", searchEntity.getText());
 				Occur textOccur = null;
-				switch(searchEntity.getTextSC()){
-					case "MUST": textOccur = Occur.MUST; break;
-					case "MUST_NOT": textOccur = Occur.MUST_NOT; break;
-					case "SHOULD": textOccur = Occur.SHOULD; break;
-					default: textOccur = Occur.SHOULD; break;
-				}
+				if(searchEntity.getTextSC().equals("MUST"))
+					textOccur = Occur.MUST;
+				else if(searchEntity.getTextSC().equals("MUST_NOT"))
+					textOccur = Occur.MUST_NOT;
+				else if(searchEntity.getTextSC().equals("SHOULD"))
+					textOccur = Occur.SHOULD;
+				else
+					textOccur = Occur.SHOULD;
 				bquery.add(query, textOccur);
 				RequiredHighlight rh = new RequiredHighlight("text", searchEntity.getText());
 				rhs.add(rh);
@@ -51,36 +53,43 @@ public class SearchController {
 				SearchType.Type authorst = SearchType.getType(searchEntity.getAuthorST());
 				Query query = QueryBuilder.buildQuery(authorst, "text", searchEntity.getAuthor());
 				Occur authorOccur = null;
-				switch(searchEntity.getAuthorSC()){
-					case "MUST": authorOccur = Occur.MUST; break;
-					case "MUST_NOT": authorOccur = Occur.MUST_NOT; break;
-					case "SHOULD": authorOccur = Occur.SHOULD; break;
-					default: authorOccur = Occur.SHOULD; break;
-				}
+				if(searchEntity.getAuthorSC().equals("MUST"))
+					authorOccur = Occur.MUST;
+				else if(searchEntity.getAuthorSC().equals("MUST_NOT"))
+					authorOccur = Occur.MUST_NOT;
+				else if(searchEntity.getAuthorSC().equals("SHOULD"))
+					authorOccur = Occur.SHOULD;
+				else
+					authorOccur = Occur.SHOULD;
 				bquery.add(query, authorOccur);
 			}
 			if(!(searchEntity.getKeywords() == null || searchEntity.getKeywords().equals(""))){
 				SearchType.Type keywordsst = SearchType.getType(searchEntity.getKeywordsST());
 				Query query = QueryBuilder.buildQuery(keywordsst, "text", searchEntity.getAuthor());
 				Occur keywordsoccur = null;
-				switch(searchEntity.getKeywordsSC()){
-					case "MUST": keywordsoccur = Occur.MUST; break;
-					case "MUST_NOT": keywordsoccur = Occur.MUST_NOT; break;
-					case "SHOULD": keywordsoccur = Occur.SHOULD; break;
-					default: keywordsoccur = Occur.SHOULD; break;
-				}
+				if(searchEntity.getKeywordsSC().equals("MUST"))
+					keywordsoccur = Occur.MUST;
+				else if(searchEntity.getKeywordsSC().equals("MUST_NOT"))
+					keywordsoccur = Occur.MUST_NOT;
+				else if(searchEntity.getKeywordsSC().equals("SHOULD"))
+					keywordsoccur = Occur.SHOULD;
+				else
+					keywordsoccur = Occur.SHOULD;
 				bquery.add(query, keywordsoccur);
 			}
 			if(!(searchEntity.getTitle() == null || searchEntity.getTitle().equals(""))){
 				SearchType.Type titlest = SearchType.getType(searchEntity.getTitleST());
 				Query query = QueryBuilder.buildQuery(titlest, "text", searchEntity.getAuthor());
 				Occur titleoccur = null;
-				switch(searchEntity.getTitleSC()){
-					case "MUST": titleoccur = Occur.MUST; break;
-					case "MUST_NOT": titleoccur = Occur.MUST_NOT; break;
-					case "SHOULD": titleoccur = Occur.SHOULD; break;
-					default: titleoccur = Occur.SHOULD; break;
-				}
+				if(searchEntity.getTitleSC().equals("MUST"))
+					titleoccur = Occur.MUST;
+				else if(searchEntity.getTitleSC().equals("MUST_NOT"))
+					titleoccur = Occur.MUST_NOT;
+				else if(searchEntity.getTitleSC().equals("SHOULD"))
+					titleoccur = Occur.SHOULD;
+				else
+					titleoccur = Occur.SHOULD;
+				
 				bquery.add(query, titleoccur);
 			}
 			
