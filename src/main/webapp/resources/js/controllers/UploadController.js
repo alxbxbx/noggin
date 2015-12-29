@@ -17,6 +17,8 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFac
 
     $scope.log = '';
 
+    $scope.loadingBar = 0;
+
     $scope.upload = function(file, languageId, categoryId) {
         console.log(file);
         console.log("Language: " + $scope.upload_language);
@@ -32,12 +34,11 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFac
                     userId: sessionStorage.getItem("auth_id")
                 }
             }).progress(function (event) {
-                var progressPercentage = parseInt(100.0 * event.loaded / event.total);
-                $scope.log = 'progress: ' + progressPercentage + '% ' +
-                    event.config.data.file.name + '\n' + $scope.log;
+                $scope.loadingBar = parseInt(100.0 * event.loaded / event.total);
             }).success(function (data, status, headers, config) {
                 $timeout(function() {
-                    $scope.log = 'file: ' + config.data.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
+                    $scope.loadingBar = 100;
+                    $scope.tempFile = data;
                 });
             });
         }

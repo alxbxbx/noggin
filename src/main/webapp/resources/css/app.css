@@ -59,7 +59,8 @@ h2, h2 small {
 
 .drop-box {
     border:2px dashed gray;
-    padding:25px;
+    padding:50px 0;
+    text-align:center;
     background: whitesmoke;
 }
 .drop-box.dragover {
