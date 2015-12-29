@@ -1,0 +1,41 @@
+<div ng-include="'/resources/html/modals/edit_category.html'"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Manage Categories <br/><small>Add, edit or remove any category from database</small></h2>
+    </div>
+</div>
+<div class="row makeitboxy">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Available Categories</div>
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th style="width:100%">Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="category in categories">
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a href="" ng-click="clickRemoveCategory(category.id)" class="btn btn-danger btn-xs" role="button">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </a>
+                    </td>
+                    <td>
+                        <a href=""
+                           class="btn btn-primary btn-xs"
+                           role="button"
+                           data-toggle="modal"
+                           ng-click="clickEditCategory(category.id, category.name)"
+                           data-target="#editCategoryModal">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

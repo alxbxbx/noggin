@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFactory', 'languageFactory',
-    function ($scope, Upload, $timeout, categoryFactory, languageFactory) {
+app.controller('UploadController', ['$scope', '$http', 'Upload', '$timeout', 'categoryFactory', 'languageFactory',
+    function ($scope, $http, Upload, $timeout, categoryFactory, languageFactory) {
 
     categoryFactory.getAll().success(function (data) {
         $scope.categories = data;
@@ -20,10 +20,6 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFac
     $scope.loadingBar = 0;
 
     $scope.upload = function(file, languageId, categoryId) {
-        console.log(file);
-        console.log("Language: " + $scope.upload_language);
-        console.log("Category: " + $scope.upload_category);
-        console.log("User: " + sessionStorage.getItem("auth_id"));
         if (!file.$error) {
             Upload.upload({
                 url: '/book',
@@ -39,9 +35,26 @@ app.controller('UploadController', ['$scope', 'Upload', '$timeout', 'categoryFac
                 $timeout(function() {
                     $scope.loadingBar = 100;
                     $scope.tempFile = data;
+                    console.log("Incoming data:");
+                    console.log(data);
                 });
             });
         }
+    };
+
+    $scope.save = function() {
+        if (!$scope.tempFile.title || !$scope.tempFile.keywords) {
+            alert('Title and keywords are important!');
+        }
+        console.log("Sending file:");
+        console.log($scope.tempFile);
+        $http.post('/book/permanent', $scope.tempFile).success(function (data) {
+            console.log(data);
+        });
+    };
+
+    $scope.cancel = function() {
+
     };
 
 }]);

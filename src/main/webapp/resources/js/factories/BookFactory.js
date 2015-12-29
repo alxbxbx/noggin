@@ -4,8 +4,8 @@ app.factory('bookFactory', ['$http', function ($http) {
 
     var factory = {};
 
-    factory.search = function () {
-        return $http.get('search');
+    factory.getAll = function () {
+        return $http.get('/book');
     };
 
     return factory;

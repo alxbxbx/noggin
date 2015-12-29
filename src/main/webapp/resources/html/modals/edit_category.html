@@ -1,0 +1,21 @@
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Category</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" id="edit-category-name">Name</span>
+                    <input ng-model="selectedCategory.name" type="text" class="form-control" describedby="edit-category-name" placeholder="Name...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="clickUpdateCategory()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

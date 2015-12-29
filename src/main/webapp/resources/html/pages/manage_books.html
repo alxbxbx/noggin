@@ -4,5 +4,26 @@
     </div>
 </div>
 <div class="row makeitboxy">
-    Books
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Available Books</div>
+            <table class="table table-striped">
+                <tbody>
+                <tr ng-repeat="book in books">
+                    <td>{{ book.title }}, {{ book.author }}</td>
+                    <td style="width:100px;text-align:right;">
+                        <a href="#" class="btn btn-danger btn-xs" role="button">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </a>
+                    </td>
+                    <td style="width:65px;text-align:right;">
+                        <a href="#" class="btn btn-primary btn-xs" role="button">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </a>
+                    </td>
+                </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

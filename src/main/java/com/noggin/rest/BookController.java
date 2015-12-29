@@ -140,16 +140,10 @@ public class BookController {
 
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Book> storeBook(@PathVariable String id, @RequestBody Book book) {
-		Integer intId = null;
+	@RequestMapping(value = "/permanent", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<Book> storeBook(@RequestBody Book book) {
 		Book b = new Book();
-		try {
-			intId = Integer.parseInt(id);
-			b = ib.findOne(intId);
-		} catch (Exception e) {
-			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
-		}
+
 		b.setAuthor(book.getAuthor());
 		b.setCategory(book.getCategory());
 		b.setKeywords(book.getKeywords());

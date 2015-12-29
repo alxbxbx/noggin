@@ -62,7 +62,12 @@ h2, h2 small {
     padding:50px 0;
     text-align:center;
     background: whitesmoke;
+	margin-bottom:10px;
 }
 .drop-box.dragover {
     border:2px solid #3c3c3c;
+}
+
+.progress-bar {
+	margin-bottom:10px;
 }

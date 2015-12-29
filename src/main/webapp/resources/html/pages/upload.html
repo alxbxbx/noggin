@@ -13,30 +13,35 @@
                 <span class="input-group-addon" id="upload-category-addon">
                     <span class=" glyphicon glyphicon-tasks"></span>
                 </span>
-                <select ng-selected="0" name="upload_category" ng-model="upload_category" class="form-control" id="upload-category" describedby="upload-category-addon">
+                <select ng-model="upload_category"
+                        name="upload_category"
+                        class="form-control"
+                        id="upload-category"
+                        describedby="upload-category-addon">
                     <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
                 </select>
             </div>
 
             <!-- Language -->
-            <label for="upload-language">Book Language</label>
-            <div class="input-group">
+            <label for="upload-language" ng-hide="!upload_category">Book Language</label>
+            <div class="input-group" ng-hide="!upload_category">
                 <span class="input-group-addon" id="upload-language-addon">
                     <span class=" glyphicon glyphicon-tasks"></span>
                 </span>
                 <select ng-model="upload_language"
-                        ng-options="language.id as language.name for language in languages"
                         name="upload_language"
                         class="form-control"
                         id="upload-language"
-                        describedby="upload-language-text-size">
+                        describedby="upload-language">
+                    <option ng-repeat="language in languages" value="{{ language.id }}">{{ language.name }}</option>
                 </select>
             </div>
 
             <!-- PDF File -->
-            <div ngf-drop ngf-select ng-model="file" class="drop-box" ng-hide="loadingBar==100"
+            <div ngf-drop ngf-select ng-model="file" class="drop-box"
                  ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
                  accept="application/pdf"
+                 ng-hide="!upload_category || !upload_language || loadingBar == 100"
                  ngf-pattern="'application/pdf'" ng-select="upload($file)">Drop PDF files here or click to upload...
             </div>
 
@@ -44,22 +49,52 @@
             <label for="upload-file-placeholder" ng-show="tempFile">PDF File</label>
             <div class="input-group" ng-show="tempFile">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
-                <input id="upload-file-placeholder" type="text" class="form-control" value="{{file.name}}">
+                <input disabled="disabled" id="upload-file-placeholder" type="text" class="form-control" value="{{file.name}}">
             </div>
 
             <!-- Loading Bar -->
-            <div class="progress" ng-hide="loadingBar == 0 || loadingBar == 100">
+            <div class="progress" ng-hide="loadingBar == 0">
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ loadingBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{loadingBar}}%">
-                    <span class="sr-only">40% Complete (success)</span>
                 </div>
             </div>
 
             <!-- Title -->
             <label for="upload-title" ng-show="tempFile">Title</label>
             <div class="input-group" ng-show="tempFile">
-                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-tasks"></span></span>
-                <input id="upload-title" type="text" class="form-control" value="{{file.name}}">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                <input id="upload-title" ng-model="tempFile.title" type="text" class="form-control">
             </div>
+
+            <!-- Author -->
+            <label for="upload-author" ng-show="tempFile">Author</label>
+            <div class="input-group" ng-show="tempFile">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                <input id="upload-author" ng-model="tempFile.author" type="text" class="form-control" value="{{tempFile.author}}">
+            </div>
+
+            <!-- Keywords -->
+            <label for="upload-keywords" ng-show="tempFile">Keywords</label>
+            <div class="input-group" ng-show="tempFile">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                <textarea id="upload-keywords" ng-model="tempFile.keywords" type="text" class="form-control"></textarea>
+            </div>
+
+            <!-- Publication Year -->
+            <label for="upload-publication-year" ng-show="tempFile">Publication Year</label>
+            <div class="input-group" ng-show="tempFile">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                <input id="upload-publication-year" ng-model="tempFile.publicationYear" type="number" step="1" class="form-control" value="{{tempFile.publicationYear}}">
+            </div>
+
+            <!-- Save -->
+            <button ng-show="tempFile" type="button" class="btn btn-primary btn-sm" ng-click="save()" style="float:right">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save Book
+            </button>
+
+            <!-- Cancel -->
+            <button ng-show="tempFile" ng-click="cancel()" type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+            </button>
 
         </div>
     </div>
