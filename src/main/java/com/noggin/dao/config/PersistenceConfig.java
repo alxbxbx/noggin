@@ -65,6 +65,7 @@ public class PersistenceConfig {
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
+        hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
         
 	    factory.setJpaProperties(hibernateProperties);
 	    return factory;
