@@ -135,7 +135,6 @@ public class BookController {
 		book.setUser(u);
 		book.setTemp(1);
 
-
 		return new ResponseEntity<Book>(ib.save(book), HttpStatus.OK);
 
 	}
@@ -181,7 +180,7 @@ public class BookController {
 			tempFile.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return new ResponseEntity<Book>(HttpStatus.CONFLICT);
+			//return new ResponseEntity<Book>(HttpStatus.CONFLICT);
 		}
 		b.setPath(storagePath);
 
