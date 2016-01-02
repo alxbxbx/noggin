@@ -21,8 +21,6 @@ app.controller('ManageBooksController', ['$scope', '$http', 'bookFactory', 'lang
     // Select Book
     $scope.clickEditBook = function(bookByReference) {
         $scope.book = bookByReference;
-        console.log("Selected book:");
-        console.log(bookByReference);
     };
 
     // Save Book
@@ -30,21 +28,26 @@ app.controller('ManageBooksController', ['$scope', '$http', 'bookFactory', 'lang
         if (!$scope.book.title || !$scope.book.keywords) {
             alert("Title and keywords are required!");
         } else {
-            console.log("Preparing to update book:");
-            console.log($scope.book);
             $http.put('/book/' + $scope.book.id, $scope.book).success(function (data) {
                 bookFactory.getAll().success(function(data) {
                     $scope.books = data;
                 });
-                console.log("Book updated successfully.");
                 $('#editBookModal').modal('hide');
             });
         }
     };
 
     // Remove Book
-    $scope.clickRemoveBook = function() {
-
+    $scope.clickRemoveBook = function(book) {
+        var check = prompt("Are you sure? [Y/N]");
+        if (check.toLowerCase() == 'y')
+        {
+            $http.delete('/book/' + book.id).success(function (data) {
+                bookFactory.getAll().success(function(data) {
+                    $scope.books = data;
+                });
+            });
+        }
     };
 
 }]);

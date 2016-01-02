@@ -26,7 +26,7 @@
                     <td>{{ book.category.name }}</td>
                     <td>{{ book.language.name }}</td>
                     <td style="width:100px;text-align:right;">
-                        <a href="" class="btn btn-danger btn-xs" role="button">
+                        <a href="" class="btn btn-danger btn-xs" ng-click="clickRemoveBook(book)" role="button">
                             <span class="glyphicon glyphicon-remove"></span> Delete
                         </a>
                     </td>
