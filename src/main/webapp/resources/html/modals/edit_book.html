@@ -1,0 +1,48 @@
+<div class="modal fade" id="editBookModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form novalidate>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Book</h4>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Title -->
+                    <label for="edit-book-title">Title</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                        <input id="edit-book-title" ng-model="book.title" type="text" class="form-control">
+                    </div>
+
+                    <!-- Author -->
+                    <label for="edit-book-author">Author</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                        <input id="edit-book-author" ng-model="book.author" type="text" class="form-control">
+                    </div>
+
+                    <!-- Keywords -->
+                    <label for="edit-book-keywords">Keywords</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                        <textarea id="edit-book-keywords" ng-model="book.keywords" type="text" class="form-control"></textarea>
+                    </div>
+
+                    <!-- Publication Year -->
+                    <label for="edit-book-publication-year">Publication Year</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+                        <input id="edit-book-publication-year" ng-model="book.publicationYear" type="number" step="1" class="form-control">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="clickUpdateBook()">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
