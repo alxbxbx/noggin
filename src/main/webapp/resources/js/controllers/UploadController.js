@@ -35,8 +35,6 @@ app.controller('UploadController', ['$scope', '$http', 'Upload', '$timeout', 'ca
                 $timeout(function() {
                     $scope.loadingBar = 100;
                     $scope.tempFile = data;
-                    console.log("Incoming data:");
-                    console.log(data);
                 });
             });
         }
@@ -46,10 +44,8 @@ app.controller('UploadController', ['$scope', '$http', 'Upload', '$timeout', 'ca
         if (!$scope.tempFile.title || !$scope.tempFile.keywords) {
             alert('Title and keywords are important!');
         }
-        console.log("Sending file:");
-        console.log($scope.tempFile);
         $http.post('/book/permanent', $scope.tempFile).success(function (data) {
-            console.log(data);
+            console.log('PERMANENT BOOK STORED SUCCESSFULLY!!!');
         });
     };
 
