@@ -55,12 +55,28 @@ public class BookController {
 
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Book> getAll() {
+		List<Book> allBooks = ib.findAll();
 		List<Book> books = new ArrayList<Book>();
-		books = ib.findAll();
-
+		for(Book b : allBooks){
+			if(b.getTemp().equals(0))
+				books.add(b);
+		}
 		return books;
 	}
-
+	@RequestMapping(value="/category/{id}")
+	public List<Book> getByCategory(@PathVariable String id) {
+		Integer intId = null;
+		Category cat = null;
+		try{
+			intId = Integer.parseInt(id);
+			cat = ic.findOne(intId);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		List<Book> books = ib.findByCategory(cat);
+		return books;
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Book> get(@PathVariable String id) {
 		Integer intId = null;
