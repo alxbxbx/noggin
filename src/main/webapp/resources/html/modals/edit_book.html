@@ -37,6 +37,34 @@
                         <input id="edit-book-publication-year" ng-model="book.publicationYear" type="number" step="1" class="form-control">
                     </div>
 
+                    <!-- Category -->
+                    <label for="edit-book-category">Pick Category</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="upload-category-addon">
+                            <span class=" glyphicon glyphicon-tasks"></span>
+                        </span>
+                        <select ng-model="book.category"
+                                class="form-control"
+                                id="edit-book-category"
+                                ng-options="category.name for category in categories track by category.id"
+                                describedby="edit-book-category-addon">
+                        </select>
+                    </div>
+
+                    <!-- Language -->
+                    <label for="edit-book-language">Book Language</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="edit-book-language-addon">
+                            <span class=" glyphicon glyphicon-tasks"></span>
+                        </span>
+                        <select ng-model="book.language"
+                                class="form-control"
+                                id="edit-book-language"
+                                ng-options="language.name for language in languages track by language.id"
+                                describedby="edit-book-language">
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
