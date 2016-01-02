@@ -50,8 +50,7 @@ public class CategoryController {
     		return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
     	}
     	cat.setName(category.getName());
-    	ic.save(cat);
-    	return new ResponseEntity<Category>(cat,HttpStatus.OK);
+    	return new ResponseEntity<Category>(ic.save(cat), HttpStatus.OK);
     }
     
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")

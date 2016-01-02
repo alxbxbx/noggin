@@ -143,7 +143,7 @@ public class BookController {
 	@RequestMapping(value = "/permanent", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Book> storeBook(@RequestBody Book book) {
 		Book b = ib.findOne(book.getId());
-
+		
 		b.setAuthor(book.getAuthor());
 		b.setCategory(book.getCategory());
 		b.setKeywords(book.getKeywords());
@@ -152,7 +152,7 @@ public class BookController {
 		b.setTitle(book.getTitle());
 		b.setUser(book.getUser());
 		b.setTemp(0);
-
+		
 		String storagePath = ResourceBundle.getBundle("application").getString("storage");
 		storagePath += b.getFilename();
 
