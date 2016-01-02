@@ -59,7 +59,7 @@ public class CategoryController {
     		return new ResponseEntity<Category>(HttpStatus.BAD_REQUEST);
     	return new ResponseEntity<Category>(ic.save(category), HttpStatus.OK);
     }
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Category> delete(@PathVariable String id){
     	Integer intId = null;
     	try{

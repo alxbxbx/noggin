@@ -215,7 +215,7 @@ public class BookController {
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Book> book(@PathVariable String id) {
 		Integer intId = null;
 		try {
