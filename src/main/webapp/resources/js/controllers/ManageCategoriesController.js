@@ -26,8 +26,12 @@ app.controller('ManageCategoriesController', ['$scope', '$http', 'categoryFactor
     $scope.clickUpdateCategory = function() {
         $http.put('/category/' + $scope.selectedCategory.id, $scope.selectedCategory).success(function(data) {
             console.log(data);
+            categoryFactory.getAll().success(function(categories) {
+                $scope.categories = categories;
+            });
             $('#editCategoryModal').modal('hide');
         });
+
     };
 
 }]);
