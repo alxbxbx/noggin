@@ -1,13 +1,18 @@
 <div class="row margin-bottom">
     <div class="col-lg-12">
         <div class="input-group main-search-input" style="margin:0">
-            <input type="text" class="form-control" placeholder="Enter book name..." ng-model="searchInput">
+            <input type="text" class="form-control" placeholder="Enter book name..." ng-model="search">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
             </span>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+
     </div>
 </div>
 <div class="row">
@@ -24,7 +29,7 @@
                     <th>Kategorija</th>
                     <th></th>
                 </tr>
-                <tr ng-repeat="book in books | filter:searchInput">
+                <tr ng-repeat="book in books">
                     <td>{{ book.id }}</td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.title }}</td>
