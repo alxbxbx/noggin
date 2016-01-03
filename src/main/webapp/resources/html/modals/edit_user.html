@@ -1,0 +1,92 @@
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Registration</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="col-lg-6">
+                        <label for="edit-user-first-name">First Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="edit-user-first-name-addon">
+                                <span class=" glyphicon glyphicon-edit"></span>
+                            </span>
+                            <input ng-model="user.firstName" type="text" id="edit-user-first-name" name="firstName" class="form-control" describedby="edit-user-first-name-addon" placeholder="First Name">
+                        </div>
+                    </div>
+
+                    <!-- Last Name Name -->
+                    <div class="col-lg-6">
+                        <label for="edit-user-last-name">Last Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="edit-user-last-name-addon">
+                                <span class=" glyphicon glyphicon-edit"></span>
+                            </span>
+                            <input ng-model="user.lastName" type="text" id="edit-user-last-name" name="lastName" class="form-control" describedby="edit-user-last-name-addon" placeholder="Last Name">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Username -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="edit-user-username">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="edit-user-username-addon">
+                                <span class=" glyphicon glyphicon-user"></span>
+                            </span>
+                            <input ng-model="user.username" type="username" id="edit-user-username" name="username" class="form-control" describedby="edit-user-username-addon" placeholder="Username">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Category -->
+                    <div class="col-lg-6">
+                        <label for="edit-user-category">Category</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="edit-user-category-addon">
+                                <span class=" glyphicon glyphicon-tasks"></span>
+                            </span>
+                            <select ng-model="user.category"
+                                    class="form-control"
+                                    id="edit-user-category"
+                                    ng-options="category.name for category in categories track by category.id"
+                                    describedby="edit-user-category-addon">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Type -->
+                    <div class="col-lg-6">
+                        <label for="edit-user-username">Type (0 user, 1 admin)</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="edit-user-type-addon">
+                                <span class=" glyphicon glyphicon-user"></span>
+                            </span>
+                            <input ng-model="user.type" type="username" id="edit-user-type" name="username" class="form-control" describedby="edit-user-type-addon" placeholder="Type">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="clickUpdateUser()">Update</button>
+            </div>
+
+        </div>
+    </div>
+</div>

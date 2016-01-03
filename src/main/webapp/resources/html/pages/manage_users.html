@@ -23,13 +23,13 @@
                     <td>{{ user.category.name || "Subscribed to all" }}</td>
                     <td>{{ user.type }}</td>
                     <td style="width:100px;text-align:right;">
-                        <a href="" class="btn btn-danger btn-xs" role="button">
+                        <a href="" class="btn btn-danger btn-xs" role="button" ng-click="clickRemoveUser(user)">
                             <span class="glyphicon glyphicon-remove"></span> Delete
                         </a>
                     </td>
                     <td style="width:65px;text-align:right;">
-                        <a href="" class="btn btn-primary btn-xs" ng-click="clickEditUser()"
-                           data-toggle="modal" data-target="#editBookModal" role="button">
+                        <a href="" class="btn btn-primary btn-xs" ng-click="clickEditUser(user)"
+                           data-toggle="modal" data-target="#editUserModal" role="button">
                             <span class="glyphicon glyphicon-pencil"></span> Edit
                         </a>
                     </td>
