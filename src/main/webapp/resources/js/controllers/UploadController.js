@@ -1,24 +1,27 @@
 'use strict';
 
-app.controller('UploadController', ['$scope', '$http', 'Upload', '$timeout', 'categoryFactory', 'languageFactory',
-    function ($scope, $http, Upload, $timeout, categoryFactory, languageFactory) {
+app.controller('UploadController', ['$window', '$scope', '$http', 'Upload', '$timeout', 'categoryFactory', 'languageFactory',
+    function ($window, $scope, $http, Upload, $timeout, categoryFactory, languageFactory) {
 
+    // Get Categories
     categoryFactory.getAll().success(function (data) {
         $scope.categories = data;
     });
 
+    // Get Languages
     languageFactory.getAll().success(function (data) {
         $scope.languages = data;
     });
 
+    // Watch File (Drag & Drop)
     $scope.$watch('file', function() {
         $scope.upload($scope.file);
     });
 
-    $scope.log = '';
-
+    // Define Loading Bar
     $scope.loadingBar = 0;
 
+    // Upload File
     $scope.upload = function(file, languageId, categoryId) {
         if (!file.$error) {
             Upload.upload({
@@ -40,17 +43,19 @@ app.controller('UploadController', ['$scope', '$http', 'Upload', '$timeout', 'ca
         }
     };
 
+    // Save Book
     $scope.save = function() {
         if (!$scope.tempFile.title || !$scope.tempFile.keywords) {
             alert('Title and keywords are important!');
         }
         $http.post('/book/permanent', $scope.tempFile).success(function (data) {
-            console.log('PERMANENT BOOK STORED SUCCESSFULLY!!!');
+            $window.location.href = "/manage/books";
         });
     };
 
+    // Cancel Book
     $scope.cancel = function() {
-
+        $window.location.href = "/";
     };
 
 }]);
