@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/#/"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> &nbsp;NOGGIN</a>
+            <a class="navbar-brand" href="/#/"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> &nbsp;Faculty of Technical Science</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -16,36 +16,31 @@
             <ul ng-hide="auth" class="nav navbar-nav navbar-right">
                 <li>
                     <a href="" data-toggle="modal" data-target="#loginModal">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                        Login
                     </a>
                 </li>
                 <li>
                     <a href="" data-toggle="modal" data-target="#registerModal">
-                        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Register
+                        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                        Register
                     </a>
                 </li>
             </ul>
             <ul ng-show="auth" class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="">
-                        Edit My Profile
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" data-toggle="modal" data-target="#changePasswordModal">
-                        Change My Password
-                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Logout <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-                    </a>
-                </li>
-                <li ng-show="auth_type == '1'" class="dropdown">
+                <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Manager <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        {{ auth.firstName }} {{ auth.lastName }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="">Edit My Profile</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#changePasswordModal">Change My Password</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
+                <li ng-show="auth.type == '1'" class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Manager <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/#/manage/books">Manage Books</a></li>
