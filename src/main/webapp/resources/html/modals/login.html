@@ -11,11 +11,12 @@
                     <!-- Username -->
                     <div class="row">
                         <div class="col-lg-12">
+                            <label for="login-username">Username</label>
                             <div class="input-group">
                                 <span class="input-group-addon" id="login-username-addon">
                                     <span class=" glyphicon glyphicon-user"></span>
                                 </span>
-                                <input ng-model="login_username" type="username" name="username" class="form-control" describedby="login-username-addon" placeholder="Username">
+                                <input ng-model="login_username" type="username" name="username" id="login-username" class="form-control" describedby="login-username-addon" placeholder="Username">
                             </div>
                         </div>
                     </div>
@@ -23,11 +24,12 @@
                     <!-- Password -->
                     <div class="row">
                         <div class="col-lg-12">
+                            <label for="login-password">Password</label>
                             <div class="input-group">
                                 <span class="input-group-addon" id="login-password-addon">
                                     <span class=" glyphicon glyphicon-lock"></span>
                                 </span>
-                                <input ng-model="login_password" type="password" name="password" class="form-control" describedby="login-password-addon" placeholder="Password">
+                                <input ng-model="login_password" type="password" id="login-password" name="password" class="form-control" describedby="login-password-addon" placeholder="Password">
                             </div>
                         </div>
                     </div>

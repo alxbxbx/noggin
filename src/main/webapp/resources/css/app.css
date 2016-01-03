@@ -27,6 +27,8 @@ h2, h2 small {
 
 .row [class*="col-"] { }
 
+.input-group { margin-bottom:10px; }
+
 .main-search-input {
 	margin-left:15px;
 	margin-right:15px;

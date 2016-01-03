@@ -3,7 +3,13 @@
 <div class="row makeitboxy">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Available Users</div>
+            <div class="panel-heading">
+                Available Users
+                <a href="" style="float:right" ng-click="" class="btn btn-success btn-xs"
+                   role="button" data-target="#addLanguageModal" data-toggle="modal">
+                    <span class="glyphicon glyphicon-plus"></span> Add Language
+                </a>
+            </div>
             <table class="table table-striped">
                 <tr>
                     <th>ID</th>
@@ -12,6 +18,7 @@
                     <th>Last Name</th>
                     <th>Category</th>
                     <th>Type</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -31,6 +38,12 @@
                         <a href="" class="btn btn-primary btn-xs" ng-click="clickEditUser(user)"
                            data-toggle="modal" data-target="#editUserModal" role="button">
                             <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </a>
+                    </td>
+                    <td style="width:65px;text-align:right;">
+                        <a href="" class="btn btn-primary btn-xs" ng-click="clickEditPassword(user)"
+                           data-toggle="modal" data-target="#changePasswordModal" role="button">
+                            <span class="glyphicon glyphicon-lock"></span> Change Password
                         </a>
                     </td>
                     </td>
