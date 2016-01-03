@@ -16,8 +16,6 @@
 		<div ng-include="'/resources/html/modals/edit_profile.html'"></div>
 		<div ng-include="'/resources/html/modals/register.html'"></div>
 
-		<div id="headground"></div>
-
         <div ng-include="'/resources/html/partials/main_menu.html'"></div>
 	    
 		<div class="container">
