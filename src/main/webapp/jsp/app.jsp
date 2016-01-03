@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/resources/css/libs/bootstrap-ubuntu.min.css">
 		<link rel="stylesheet" type="text/css" href="/resources/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/resources/css/font-awesome.min.css">
 	</head>
 	<body ng-controller="AppController">
 
