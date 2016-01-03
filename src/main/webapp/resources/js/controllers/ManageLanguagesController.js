@@ -35,7 +35,7 @@ app.controller('ManageLanguagesController', ['$scope', '$http', 'languageFactory
     // Click Update Language
     $scope.clickUpdateLanguage = function() {
         $http.put('/language/' + $scope.language.id, $scope.language).success(function(data) {
-            languagFactory.getAll().success(function(languages) {
+            languageFactory.getAll().success(function(languages) {
                 $scope.languages = languages;
                 $('#editLanguageModal').modal('hide');
             });
