@@ -1,20 +1,20 @@
-<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="editLanguageModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Add Category</h4>
+                <h4 class="modal-title">Edit Language</h4>
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <span class="input-group-addon" id="add-category-name">Name</span>
-                    <input ng-model="category.name" type="text" class="form-control" describedby="add-category-name" placeholder="Name...">
+                    <span class="input-group-addon" id="edit-language-name">Name</span>
+                    <input ng-model="language.name" type="text" class="form-control" describedby="edit-language-name" placeholder="Name...">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="clickSaveCategory()">Save</button>
+                <button type="button" class="btn btn-primary" ng-click="clickUpdateLanguage()">Update</button>
             </div>
         </div>
     </div>

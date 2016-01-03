@@ -30,11 +30,12 @@ app.controller('ManageCategoriesController', ['$scope', '$http', 'categoryFactor
     // Click Edit Category
     $scope.clickEditCategory = function(category) {
         $scope.category = category;
+        console.log(category);
     };
 
     // Click Update Category
     $scope.clickUpdateCategory = function() {
-        $http.put('/category/' + $scope.selectedCategory.id, $scope.selectedCategory).success(function(data) {
+        $http.put('/category/' + $scope.category.id, $scope.category).success(function(data) {
             categoryFactory.getAll().success(function(categories) {
                 $scope.categories = categories;
                 $('#editCategoryModal').modal('hide');

@@ -22,6 +22,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/resources/html/pages/manage_categories.html',
             controller: 'ManageCategoriesController'
         })
+        .when('/manage/languages', {
+            templateUrl: '/resources/html/pages/manage_languages.html',
+            controller: 'ManageLanguagesController'
+        })
         .when('/upload', {
             templateUrl: '/resources/html/pages/upload.html',
             controller: 'UploadController'
