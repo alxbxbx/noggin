@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.noggin.dao.repositories.IBook;
 import com.noggin.dao.repositories.ILanguage;
+import com.noggin.models.Book;
 import com.noggin.models.Language;
 
 @RestController
@@ -20,6 +22,9 @@ public class LanguageController {
 	
 	@Autowired
 	private ILanguage il;
+	
+	@Autowired
+	private IBook ib;
 	
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Language> getAll(){
@@ -40,15 +45,26 @@ public class LanguageController {
 		return new ResponseEntity<Language>(language, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Language> delete(@PathVariable String id){
 		Integer intId = null;
 		try{
 			intId = Integer.parseInt(id);
-			il.delete(intId);
+			
 		}catch(Exception e){
 			return new ResponseEntity<Language>(HttpStatus.BAD_REQUEST);
 		}
+		Language lan = il.findAll().get(0);
+		if(lan.getId().equals(intId))
+			lan = il.findAll().get(1);
+		List<Book> books = ib.findAll();
+		for(Book b : books){
+			if(b.getLanguage().getId().equals(intId)){
+				b.setLanguage(lan);
+				ib.save(b);
+			}
+		}
+		il.delete(intId);
 		return new ResponseEntity<Language>(HttpStatus.OK);
 	}
 	

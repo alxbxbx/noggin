@@ -83,10 +83,12 @@ public class BookController {
 		Book book = null;
 		try {
 			intId = Integer.parseInt(id);
-			book = ib.findOne(intId);
 		} catch (Exception e) {
 			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		}
+		book = ib.findOne(intId);
+		if(book.getTemp().equals(1))
+			return new ResponseEntity<Book>(HttpStatus.BAD_REQUEST);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 
 	}

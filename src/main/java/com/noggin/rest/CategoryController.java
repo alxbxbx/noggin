@@ -1,7 +1,11 @@
 package com.noggin.rest;
 
+import com.noggin.dao.repositories.IBook;
 import com.noggin.dao.repositories.ICategory;
+import com.noggin.dao.repositories.IUser;
+import com.noggin.models.Book;
 import com.noggin.models.Category;
+import com.noggin.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +24,16 @@ public class CategoryController {
 	
 	@Autowired
 	private ICategory ic;
+	
+	@Autowired
+	private IUser iu;
+	
+	@Autowired
+	private IBook ib;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public List<Category> getAll() {
         List<Category> list = ic.findAll();
-       
         return list;
     }
     @RequestMapping(value="/{id}", method = RequestMethod.GET, produces = "application/json")
@@ -64,10 +73,30 @@ public class CategoryController {
     	Integer intId = null;
     	try{
     		intId = Integer.parseInt(id);
-    		ic.delete(intId);
     	}catch (Exception e){
     		return new ResponseEntity<Category>(HttpStatus.BAD_REQUEST);
     	}
+    	Category cat = ic.findAll().get(0);
+    	if(cat.getId().equals(intId))
+    		cat = ic.findAll().get(1);
+    	List<User> users = iu.findAll();
+    	for(User u : users){
+    		try{
+    			if(u.getCategory().getId().equals(intId)){
+        			u.setCategory(cat);
+        			iu.save(u);
+        		}
+    		}catch(Exception e){	
+    		}	
+    	}
+    	List<Book> books = ib.findAll();
+    	for(Book b : books){
+    		if(b.getCategory().getId().equals(intId)){
+    			b.setCategory(cat);
+    			ib.save(b);
+    		}
+    	}
+    	ic.delete(intId);
     	return new ResponseEntity<Category>(HttpStatus.OK);
     }
 
