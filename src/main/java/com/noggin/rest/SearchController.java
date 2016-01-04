@@ -25,7 +25,7 @@ import com.noggin.models.SearchEntity;
 @RequestMapping(value = "/search")
 public class SearchController {
 
-	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, consumes = "application/json")
 	public List<HighlightBook> searchAuthor(@RequestBody SearchEntity searchEntity) {
 		List<HighlightBook> hbooks = new ArrayList<HighlightBook>();
 		List<ResultData> results = new ArrayList<ResultData>();

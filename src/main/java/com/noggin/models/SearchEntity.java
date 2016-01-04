@@ -3,6 +3,7 @@ package com.noggin.models;
 import java.io.Serializable;
 
 /* ST in attributes is for Search Type and it can be:
+
 	"Regular",
 	"Fuzzy",
 	"Phrase",
