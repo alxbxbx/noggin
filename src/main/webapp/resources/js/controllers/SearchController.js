@@ -65,6 +65,12 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
     $scope.searchTextType = $scope.types[0];
     $scope.searchAuthorType = $scope.types[0];
 
+    // Define variables
+    $scope.searchText = "";
+    $scope.searchKeywords = "";
+    $scope.searchTitle = "";
+    $scope.searchAuthor = "";
+
     $scope.clickSearch = function() {
 
         var searchData = {
