@@ -19,6 +19,12 @@
             <label for="search-text">Text</label>
             <input type="text" id="search-text" class="form-control" placeholder="Search for text..." ng-model="searchText">
         </div>
+
+        <!-- Author -->
+        <div class="input-group" style="width:100%">
+            <label for="search-author">Author</label>
+            <input type="text" id="search-author" class="form-control" placeholder="Search for author..." ng-model="searchAuthor">
+        </div>
     </div>
 
     <div class="col-sm-2 col-xs-6">
@@ -51,6 +57,17 @@
                     id="search-text-type"
                     class="form-control"
                     ng-model="searchTextType"
+                    ng-options="type.name for type in types">
+            </select>
+        </div>
+
+        <!-- Author Condition -->
+        <div class="input-group">
+            <label for="search-author-type">Type</label>
+            <select type="text"
+                    id="search-author-type"
+                    class="form-control"
+                    ng-model="searchAuthorType"
                     ng-options="type.name for type in types">
             </select>
         </div>
@@ -90,13 +107,24 @@
                     ng-options="condition.name for condition in conditions">
             </select>
         </div>
+
+        <!-- Author Condition -->
+        <div class="input-group">
+            <label for="search-author-condition">Condition</label>
+            <select type="text"
+                    id="search-author-condition"
+                    class="form-control"
+                    ng-model="searchAuthorCondition"
+                    ng-options="condition.name for condition in conditions">
+            </select>
+        </div>
     </div>
 </div>
 
 <div class="row" style="margin-bottom:10px;">
     <div class="col-lg-12">
-        <a href="#" class="btn btn-primary btn-sm" role="button">
-            <span class="glyphicon glyphicon-search"></span> Search
+        <a href="" ng-click="clickSearch()" class="btn btn-primary btn-sm" role="button">
+            <span class="glyphicon glyphicon-search"></span> Search Database for Books
         </a>
     </div>
 </div>
