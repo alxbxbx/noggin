@@ -2,6 +2,8 @@ package com.noggin.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+
 /* ST in attributes is for Search Type and it can be:
 
 	"Regular",
@@ -18,6 +20,7 @@ import java.io.Serializable;
 
  * */
 
+@Entity
 public class SearchEntity implements Serializable{
 	
 	/**
