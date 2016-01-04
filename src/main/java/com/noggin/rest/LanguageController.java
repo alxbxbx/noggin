@@ -32,7 +32,7 @@ public class LanguageController {
 		return languages;
 	}
 	
-	@RequestMapping(value = "/{id}", produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Language> get(@PathVariable String id){
 		Integer intId = null;
 		Language language = null;
@@ -50,9 +50,8 @@ public class LanguageController {
 		Integer intId = null;
 		try{
 			intId = Integer.parseInt(id);
-			
 		}catch(Exception e){
-			return new ResponseEntity<Language>(HttpStatus.BAD_REQUEST);
+			//return new ResponseEntity<Language>(HttpStatus.BAD_REQUEST);
 		}
 		Language lan = il.findAll().get(0);
 		if(lan.getId().equals(intId))
@@ -65,6 +64,7 @@ public class LanguageController {
 			}
 		}
 		il.delete(intId);
+		System.out.println("Prosao sam do ovde");
 		return new ResponseEntity<Language>(HttpStatus.OK);
 	}
 	

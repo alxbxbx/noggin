@@ -56,13 +56,11 @@ public class UserController {
 		}
 			return new ResponseEntity<User>(iu.save(user), HttpStatus.OK);
 	}
-	@RequestMapping(value= "/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity<User> update(@PathVariable String id, @RequestBody User user){
+	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<User> update(@RequestBody User user){
     	User u = new User();
-    	Integer intId = null;
     	try{
-    		intId = Integer.parseInt(id);
-    		u = iu.getOne(intId);
+    		u = iu.getOne(user.getId());
     	}catch (Exception e){
     		return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
     	}
