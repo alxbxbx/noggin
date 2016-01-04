@@ -7,6 +7,10 @@ var app = angular.module('noggin', ['ngRoute', 'ngFileUpload']);
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
+            templateUrl: '/resources/html/pages/home.html',
+            controller: 'HomeController'
+        })
+        .when('/search', {
             templateUrl: '/resources/html/pages/search.html',
             controller: 'SearchController'
         })
@@ -31,6 +35,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'UploadController'
         })
         .otherwise({
-            redirectTo: '/upload'
+            redirectTo: '/'
         });
 }]);

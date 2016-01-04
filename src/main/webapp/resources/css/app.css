@@ -39,6 +39,12 @@ h2, h2 small {
 	width:100%;
 }
 
+.thumbnail img {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 .padding-right-none { padding-right:0; }
 
 .drop-box {
