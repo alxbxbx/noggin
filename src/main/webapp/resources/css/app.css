@@ -35,6 +35,10 @@ h2, h2 small {
 	margin-bottom:10px;
 }
 
+.search-inputs .input-group {
+	width:100%;
+}
+
 .padding-right-none { padding-right:0; }
 
 .drop-box {

@@ -1,18 +1,103 @@
-<div class="row margin-bottom">
-    <div class="col-lg-12">
-        <div class="input-group main-search-input" style="margin:0">
-            <input type="text" class="form-control" placeholder="Enter book name..." ng-model="search">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
+<div class="row search-inputs">
+
+    <div class="col-sm-8 col-xs-12">
+
+        <!-- Keywords -->
+        <div class="input-group">
+            <label for="search-keywords">Keywords</label>
+            <input type="text" id="search-keywords" class="form-control" placeholder="Search for keywords..." ng-model="searchKeywords">
+        </div>
+
+        <!-- Title -->
+        <div class="input-group">
+            <label for="search-title">Title</label>
+            <input type="text" id="search-title" class="form-control" placeholder="Search for title..." ng-model="searchTitle">
+        </div>
+
+        <!-- Text -->
+        <div class="input-group" style="width:100%">
+            <label for="search-text">Text</label>
+            <input type="text" id="search-text" class="form-control" placeholder="Search for text..." ng-model="searchText">
+        </div>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+        <!-- Keywords Type -->
+        <div class="input-group">
+            <label for="search-keywords-type">Type</label>
+            <select type="text"
+                    id="search-keywords-type"
+                    class="form-control"
+                    ng-model="searchKeywordsType"
+                    ng-options="type.name for type in types">
+            </select>
+        </div>
+
+        <!-- Title Condition -->
+        <div class="input-group">
+            <label for="search-title-type">Type</label>
+            <select type="text"
+                    id="search-title-type"
+                    class="form-control"
+                    ng-model="searchTitleType"
+                    ng-options="type.name for type in types">
+            </select>
+        </div>
+
+        <!-- Text Condition -->
+        <div class="input-group">
+            <label for="search-text-type">Type</label>
+            <select type="text"
+                    id="search-text-type"
+                    class="form-control"
+                    ng-model="searchTextType"
+                    ng-options="type.name for type in types">
+            </select>
+        </div>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+
+        <!-- Keywords Condition -->
+        <div class="input-group">
+            <label for="search-keywords-condition">Condition</label>
+            <select type="text"
+                    id="search-keywords-condition"
+                    class="form-control"
+                    ng-model="searchKeywordsCondition"
+                    ng-options="condition.name for condition in conditions">
+            </select>
+        </div>
+
+        <!-- Title Condition -->
+        <div class="input-group">
+            <label for="search-title-condition">Condition</label>
+            <select type="text"
+                    id="search-title-condition"
+                    class="form-control"
+                    ng-model="searchTitleCondition"
+                    ng-options="condition.name for condition in conditions">
+            </select>
+        </div>
+
+        <!-- Text Condition -->
+        <div class="input-group">
+            <label for="search-text-condition">Condition</label>
+            <select type="text"
+                    id="search-text-condition"
+                    class="form-control"
+                    ng-model="searchTextCondition"
+                    ng-options="condition.name for condition in conditions">
+            </select>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
 
+<div class="row" style="margin-bottom:10px;">
+    <div class="col-lg-12">
+        <a href="#" class="btn btn-primary btn-sm" role="button">
+            <span class="glyphicon glyphicon-search"></span> Search
+        </a>
     </div>
 </div>
 <div class="row">
