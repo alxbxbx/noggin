@@ -2,7 +2,12 @@ package com.noggin.models;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
+
+import javax.persistence.*;
+
+import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /* ST in attributes is for Search Type and it can be:
 
@@ -21,34 +26,65 @@ import javax.persistence.Entity;
  * */
 
 @Entity
+@Table(name="search_entities")
+@Proxy(lazy = false)
 public class SearchEntity implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
+	@Id @GeneratedValue
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name="text")
 	private String text;
+	
+	@Column(name="text_st")
 	private String textST;
+	
+	@Column(name="text_sc")
 	private String textSC;
+	
+	@Column(name="keywords")
 	private String keywords;
+	
+	@Column(name="keywords_st")
 	private String keywordsST;
+	
+	@Column(name="keywords_sc")
 	private String keywordsSC;
+	
+	@Column(name="author")
 	private String author;
+	
+	@Column(name="author_st")
 	private String authorST;
+	
+	@Column(name="author_sc")
 	private String authorSC;
+	
+	@Column(name="title")
 	private String title;
+	
+	@Column(name="title_st")
 	private String titleST;
+	
+	@Column(name="title_sc")
 	private String titleSC;
 	
 	
 	public SearchEntity(){
 		
 	}
-	
-	public SearchEntity(String text, String textST, String textSC, String keywords, String keywordsST,
+	public SearchEntity(Integer id, String text, String textST, String textSC, String keywords, String keywordsST,
 			String keywordsSC, String author, String authorST, String authorSC, String title, String titleST,
 			String titleSC) {
 		super();
+		this.id = id;
 		this.text = text;
 		this.textST = textST;
 		this.textSC = textSC;
@@ -62,6 +98,21 @@ public class SearchEntity implements Serializable{
 		this.titleST = titleST;
 		this.titleSC = titleSC;
 	}
+
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	public String getTextSC() {
 		return textSC;

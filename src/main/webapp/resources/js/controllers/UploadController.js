@@ -22,7 +22,7 @@ app.controller('UploadController', ['$window', '$scope', '$http', 'Upload', '$ti
     $scope.loadingBar = 0;
 
     // Upload File
-    $scope.upload = function(file, languageId, categoryId) {
+    $scope.upload = function(file, languageId, categoryId, userId) {
         if (!file.$error) {
             Upload.upload({
                 url: '/book',

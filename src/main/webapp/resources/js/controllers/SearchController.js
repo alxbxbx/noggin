@@ -70,16 +70,16 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
         var searchData = {
             text: $scope.searchText,
             textST: $scope.searchTextType.id,
-            textCT: $scope.searchTextCondition.id,
+            textSC: $scope.searchTextCondition.id,
             keywords: $scope.searchKeywords,
             keywordsST: $scope.searchKeywordsType.id,
-            keywordsCT: $scope.searchKeywordsCondition.id,
+            keywordsSC: $scope.searchKeywordsCondition.id,
             title: $scope.searchTitle,
             titleST: $scope.searchTitleType.id,
-            titleCT: $scope.searchTitleCondition.id,
+            titleSC: $scope.searchTitleCondition.id,
             author: $scope.searchAuthor,
             authorST: $scope.searchAuthorType.id,
-            authorCT: $scope.searchAuthorCondition.id
+            authorSC: $scope.searchAuthorCondition.id
         };
 
         console.log(searchData);

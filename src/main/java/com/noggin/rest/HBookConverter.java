@@ -22,6 +22,11 @@ public class HBookConverter {
 		
 		for(ResultData r : results){
 			Book book = new Book();
+			System.out.println("THIS IS TITLE: "+ r.getTitle());
+			System.out.println("HIGHLIGHT IS: " + r.getHighlight());
+			System.out.println("AUTHOR IS: " + r.getAuthor());
+			System.out.println("KEYWORDS ARE: " + r.getKeywords());
+			System.out.println("FILENAME IS: " + r.getLocation());
 			book = ib.findByFilename(r.getLocation());
 			HighlightBook hbook = (HighlightBook) book;
 			hbook.setHighlight(r.getHighlight());

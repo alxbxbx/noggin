@@ -137,9 +137,10 @@ public class BookController {
 
 		Book book = new Book();
 		book.setFilename(fileName);
-		book.setPath(storagePath);
+		book.setPath(doc.get("filename"));
 		book.setTitle(doc.get("title"));
 		book.setKeywords(doc.get("keyword"));
+		book.setAuthor(doc.get("author"));
 		Long a = System.currentTimeMillis();
 		book.setCreatedAt(a.toString());
 		Integer categoryId = Integer.parseInt(catId);

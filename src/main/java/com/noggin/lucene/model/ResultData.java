@@ -5,18 +5,36 @@ public class ResultData {
 	private String keywords;
 	private String location;
 	private String highlight;
+	private String author;
 	
 	public ResultData() {
 		super();
 	}
 
-	public ResultData(String title, String keywords, String location, String highlight) {
+	
+
+	public ResultData(String title, String keywords, String location, String highlight, String author) {
 		super();
 		this.title = title;
 		this.keywords = keywords;
 		this.location = location;
 		this.highlight = highlight;
+		this.author = author;
 	}
+
+
+
+	public String getAuthor() {
+		return author;
+	}
+
+
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+
 
 	public String getTitle() {
 		return title;

@@ -48,7 +48,7 @@ public class ResultRetriever {
 		}
 		try {
 			Directory indexDir = new SimpleFSDirectory(new File(ResourceBundle
-					.getBundle("app").getString("index")));
+					.getBundle("application").getString("index")));
 			DirectoryReader reader = DirectoryReader.open(indexDir);
 			IndexSearcher is = new IndexSearcher(reader);
 			TopScoreDocCollector collector = TopScoreDocCollector.create(
@@ -74,6 +74,7 @@ public class ResultRetriever {
 				keywords = keywords.trim();
 				String title = doc.get("title");
 				String location = doc.get("filename");
+				String author = doc.get("author");
 				String highlight = "";
 				for (RequiredHighlight rh : requiredHighlights) {
 					hl = new Highlighter(new QueryScorer(query, reader, rh.getFieldName()));
@@ -85,7 +86,7 @@ public class ResultRetriever {
 					}
 				}
 				rd = new ResultData(title, keywords, location,
-						highlight);
+						highlight, author);
 				results.add(rd);
 			}
 			reader.close();
