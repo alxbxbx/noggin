@@ -75,7 +75,7 @@ public class ResultRetriever {
 				String title = doc.get("title");
 				String location = doc.get("filename");
 				String author = doc.get("author");
-				String highlight = "";
+				String highlight = "Nothing to add";
 				for (RequiredHighlight rh : requiredHighlights) {
 					hl = new Highlighter(new QueryScorer(query, reader, rh.getFieldName()));
 					try{
@@ -83,6 +83,7 @@ public class ResultRetriever {
 								"" + getDocumentText(location));
 					}catch (InvalidTokenOffsetsException e) {
 						//throw new IllegalArgumentException("Unable to make highlight");
+						System.out.println("UNABLE TO MAKE HIGHLIGHT");
 					}
 				}
 				rd = new ResultData(title, keywords, location,
