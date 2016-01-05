@@ -109,7 +109,6 @@ public class BookController {
 
 		FileInputStream reader = null;
 		FileOutputStream writer = null;
-		int totalBytes = 0;
 
 		try {
 			reader = (FileInputStream) uploadedPDF.getInputStream();
@@ -118,7 +117,6 @@ public class BookController {
 
 			while ((bytesRead = reader.read(buffer)) != -1) {
 				writer.write(buffer);
-				totalBytes += bytesRead;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -134,6 +132,8 @@ public class BookController {
 		PDFHandler handler = new PDFHandler();
 		Document doc = handler.getDocument(outputFile);
 		Indexer.getInstance().index(outputFile);
+		
+		System.out.println("KEYWORDS KKK: " + doc.get("keyword"));
 
 		Book book = new Book();
 		book.setFilename(fileName);
@@ -194,8 +194,6 @@ public class BookController {
 			reader.close();
 			writer.close();
 
-			Indexer.getInstance().index(storedFile);
-
 			tempFile.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -204,7 +202,7 @@ public class BookController {
 		b.setPath(storagePath);
 
 		// Update PDF info
-		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
+		TextField keywords = new TextField("keyword", b.getKeywords(), Store.YES);
 		TextField author = new TextField("author", b.getAuthor(), Store.YES);
 		TextField title = new TextField("title", b.getTitle(), Store.YES);
 		TextField filename = new TextField("filename", b.getFilename(), Store.YES);
@@ -213,7 +211,11 @@ public class BookController {
 		fields.add(author);
 		fields.add(title);
 		fields.add(filename);
-		Indexer.getInstance().updateDocument(b.getFilename(), fields);
+		Indexer.getInstance().updateDocument(b.getPath(), fields);
+		
+		File out = new File(b.getPath());
+	
+		Indexer.getInstance().index(out);
 
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
@@ -259,7 +261,7 @@ public class BookController {
 		b.setTitle(book.getTitle());
 
 		// Update PDF
-		TextField keywords = new TextField("keywords", b.getKeywords(), Store.YES);
+		TextField keywords = new TextField("keyword", b.getKeywords(), Store.YES);
 		TextField author = new TextField("author", b.getAuthor(), Store.YES);
 		TextField title = new TextField("title", b.getTitle(), Store.YES);
 		TextField filename = new TextField("filename", b.getFilename(), Store.YES);

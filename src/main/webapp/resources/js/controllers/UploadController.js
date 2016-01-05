@@ -30,7 +30,7 @@ app.controller('UploadController', ['$window', '$scope', '$http', 'Upload', '$ti
                     file: file,
                     languageId: $scope.upload_language,
                     categoryId: $scope.upload_category,
-                    userId: sessionStorage.getItem("auth_id")
+                    userId: 1
                 }
             }).progress(function (event) {
                 $scope.loadingBar = parseInt(100.0 * event.loaded / event.total);

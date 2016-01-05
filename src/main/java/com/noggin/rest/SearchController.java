@@ -104,7 +104,7 @@ public class SearchController {
 		} catch (ParseException e) {
 			return null;
 		}
-
+		System.out.println("DA LI SU PRAZNE JEBENO " + results.size());
 		HBookConverter hbc = new HBookConverter();
 		hbooks = hbc.convert(results);
 		return hbooks;
