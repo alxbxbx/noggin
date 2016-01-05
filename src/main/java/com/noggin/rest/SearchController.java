@@ -7,21 +7,27 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.noggin.dao.repositories.IBook;
 import com.noggin.lucene.model.RequiredHighlight;
 import com.noggin.lucene.model.ResultData;
 import com.noggin.lucene.model.SearchType;
 import com.noggin.lucene.search.QueryBuilder;
 import com.noggin.lucene.search.ResultRetriever;
+import com.noggin.models.Book;
 import com.noggin.models.HighlightBook;
 
 @RestController
 @RequestMapping(value = "/search")
 public class SearchController {
+	
+	@Autowired
+	private IBook ib;
 
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<HighlightBook> searchAuthor(@RequestParam("text") String text, @RequestParam("textST") String textST,
@@ -105,8 +111,29 @@ public class SearchController {
 			return null;
 		}
 		System.out.println("DA LI SU PRAZNE JEBENO " + results.size());
-		HBookConverter hbc = new HBookConverter();
-		hbooks = hbc.convert(results);
+		List<Book> books = ib.findAll();
+		for(ResultData r : results){
+			Book book = new HighlightBook();
+			System.out.println("THIS IS TITLE: "+ r.getTitle());
+			System.out.println("HIGHLIGHT IS: " + r.getHighlight());
+			System.out.println("AUTHOR IS: " + r.getAuthor());
+			System.out.println("KEYWORDS ARE: " + r.getKeywords());
+			System.out.println("FILENAME IS: " + r.getLocation());
+			for(Book b : books){
+				if(b.getFilename().equals(r.getLocation())){
+					book = b;
+				}
+			}
+			HighlightBook hbook = new HighlightBook(book);
+			try{
+				hbook.setHighlight(r.getHighlight());
+			}catch(NullPointerException e){
+				System.out.println("There is no highlight.");
+			}
+			hbooks.add(hbook);
+			
+		}
+		
 		return hbooks;
 
 	}

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field.Store;
+import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
@@ -158,7 +160,7 @@ public class Indexer {
 	 * 
 	 * @param file Direktorijum u kojem se nalaze dokumenti koje treba indeksirati
 	 */
-	public void index(File file){		
+	public void index(File file, String title, String author, String keyword, String filename){		
 		DocumentHandler handler = null;
 		String fileName = null;
 		try {
@@ -177,7 +179,16 @@ public class Indexer {
 						System.out.println("Nije moguce indeksirati dokument sa nazivom: " + fileName);
 						continue;
 					}
-					this.indexWriter.addDocument(handler.getDocument(newFile));
+					Document doc = handler.getDocument(newFile);
+					doc.removeField("title");
+					doc.add(new TextField("title", title, Store.YES));
+					doc.removeField("author");
+					doc.add(new TextField("author", author, Store.YES));
+					doc.removeField("keyword");
+					doc.add(new TextField("keyword", keyword, Store.YES));
+					doc.removeField("filename");
+					doc.add(new TextField("filename", filename, Store.YES));
+					this.indexWriter.addDocument(doc);
 				}
 			}
 			this.indexWriter.commit();

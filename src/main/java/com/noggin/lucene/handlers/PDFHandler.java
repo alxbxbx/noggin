@@ -37,7 +37,7 @@ public class PDFHandler extends DocumentHandler {
 			for (String keyword : splittedKeywords) {
 				doc.add(new TextField("keyword", keyword, Store.YES));
 			}
-
+			
 			doc.add(new StringField("filename", file.getCanonicalPath(),
 					Store.YES));
 			

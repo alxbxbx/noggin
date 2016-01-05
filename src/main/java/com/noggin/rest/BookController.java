@@ -131,9 +131,6 @@ public class BookController {
 
 		PDFHandler handler = new PDFHandler();
 		Document doc = handler.getDocument(outputFile);
-		Indexer.getInstance().index(outputFile);
-		
-		System.out.println("KEYWORDS KKK: " + doc.get("keyword"));
 
 		Book book = new Book();
 		book.setFilename(fileName);
@@ -199,23 +196,10 @@ public class BookController {
 			e.printStackTrace();
 			//return new ResponseEntity<Book>(HttpStatus.CONFLICT);
 		}
-		b.setPath(storagePath);
-
-		// Update PDF info
-		TextField keywords = new TextField("keyword", b.getKeywords(), Store.YES);
-		TextField author = new TextField("author", b.getAuthor(), Store.YES);
-		TextField title = new TextField("title", b.getTitle(), Store.YES);
-		TextField filename = new TextField("filename", b.getFilename(), Store.YES);
-		List<IndexableField> fields = new ArrayList<IndexableField>();
-		fields.add(keywords);
-		fields.add(author);
-		fields.add(title);
-		fields.add(filename);
-		Indexer.getInstance().updateDocument(b.getPath(), fields);
 		
+		b.setPath(storagePath);
 		File out = new File(b.getPath());
-	
-		Indexer.getInstance().index(out);
+		Indexer.getInstance().index(out, b.getTitle(), b.getAuthor(), b.getKeywords(), b.getFilename());
 
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
@@ -261,16 +245,7 @@ public class BookController {
 		b.setTitle(book.getTitle());
 
 		// Update PDF
-		TextField keywords = new TextField("keyword", b.getKeywords(), Store.YES);
-		TextField author = new TextField("author", b.getAuthor(), Store.YES);
-		TextField title = new TextField("title", b.getTitle(), Store.YES);
-		TextField filename = new TextField("filename", b.getFilename(), Store.YES);
-		List<IndexableField> fields = new ArrayList<IndexableField>();
-		fields.add(keywords);
-		fields.add(author);
-		fields.add(title);
-		fields.add(filename);
-		Indexer.getInstance().updateDocument(b.getFilename(), fields);
+
 
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}

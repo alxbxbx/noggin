@@ -19,7 +19,7 @@ public class HBookConverter {
 	
 	public List<HighlightBook> convert(List<ResultData> results){
 		List<HighlightBook> hbooks = new ArrayList<HighlightBook>();
-		
+		List<Book> books = ib.findAll();
 		for(ResultData r : results){
 			Book book = new Book();
 			System.out.println("THIS IS TITLE: "+ r.getTitle());
@@ -27,9 +27,17 @@ public class HBookConverter {
 			System.out.println("AUTHOR IS: " + r.getAuthor());
 			System.out.println("KEYWORDS ARE: " + r.getKeywords());
 			System.out.println("FILENAME IS: " + r.getLocation());
-			book = ib.findByFilename(r.getLocation());
+			for(Book b : books){
+				System.out.println("Book: "+b.getFilename() + " location: " + r.getLocation());
+				if(b.getFilename().equals(r.getLocation()))
+					book = b;
+			}
 			HighlightBook hbook = (HighlightBook) book;
-			hbook.setHighlight(r.getHighlight());
+			try{
+				hbook.setHighlight(r.getHighlight());
+			}catch(NullPointerException e){
+				System.out.println("There is no highlight.");
+			}
 			hbooks.add(hbook);
 			
 		}
