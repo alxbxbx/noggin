@@ -49,6 +49,7 @@ public class ResultRetriever {
 		try {
 			Directory indexDir = new SimpleFSDirectory(new File(ResourceBundle
 					.getBundle("application").getString("index")));
+			String folder = ResourceBundle.getBundle("application").getString("storage");
 			DirectoryReader reader = DirectoryReader.open(indexDir);
 			IndexSearcher is = new IndexSearcher(reader);
 			TopScoreDocCollector collector = TopScoreDocCollector.create(
@@ -73,9 +74,9 @@ public class ResultRetriever {
 				}
 				keywords = keywords.trim();
 				String title = doc.get("title");
-				String location = doc.get("filename");
+				String location = folder + doc.get("filename");
 				String author = doc.get("author");
-				String highlight = "Nothing to add";
+				String highlight = "";
 				for (RequiredHighlight rh : requiredHighlights) {
 					hl = new Highlighter(new QueryScorer(query, reader, rh.getFieldName()));
 					try{
@@ -86,7 +87,7 @@ public class ResultRetriever {
 						System.out.println("UNABLE TO MAKE HIGHLIGHT");
 					}
 				}
-				rd = new ResultData(title, keywords, location,
+				rd = new ResultData(title, keywords, doc.get("filename"),
 						highlight, author);
 				results.add(rd);
 			}

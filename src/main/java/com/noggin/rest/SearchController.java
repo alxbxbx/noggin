@@ -110,7 +110,6 @@ public class SearchController {
 		} catch (ParseException e) {
 			return null;
 		}
-		System.out.println("DA LI SU PRAZNE JEBENO " + results.size());
 		List<Book> books = ib.findAll();
 		for(ResultData r : results){
 			Book book = new HighlightBook();

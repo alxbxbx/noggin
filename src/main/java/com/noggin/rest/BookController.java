@@ -245,7 +245,8 @@ public class BookController {
 		b.setTitle(book.getTitle());
 
 		// Update PDF
-
+		File out = new File(b.getPath());
+		Indexer.getInstance().index(out, b.getTitle(), b.getAuthor(), b.getKeywords(), b.getFilename());
 
 		return new ResponseEntity<Book>(ib.save(b), HttpStatus.OK);
 	}
