@@ -13,64 +13,101 @@
                 <form class="form-register" action="register" method="post">
 
                     <div class="row">
+
+                        <!-- First Name -->
                         <div class="col-lg-6">
                             <label for="register-first-name">First Name</label>
                             <div class="input-group">
                                 <span class="input-group-addon" id="register-first-name-addon">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </span>
-                                <input type="username" id="register-first-name" name="firstName" class="form-control" describedby="register-first-name-addon" placeholder="First Name">
+                                <input ng-model="user.firstName" type="username" id="register-first-name" name="firstName" class="form-control" describedby="register-first-name-addon" placeholder="First Name">
                             </div>
                         </div>
 
+                        <!-- Last Name -->
                         <div class="col-lg-6">
                             <label for="register-last-name">Last Name</label>
                             <div class="input-group">
                                 <span class="input-group-addon" id="register-last-name-addon">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </span>
-                                <input type="username" id="register-last-name" name="lastName" class="form-control" describedby="register-last-name-addon" placeholder="Last Name">
+                                <input ng-model="user.lastName" type="username" id="register-last-name" name="lastName" class="form-control" describedby="register-last-name-addon" placeholder="Last Name">
                             </div>
                         </div>
+
                     </div>
 
+                    <!-- Username -->
                     <label for="register-username">Username</label>
                     <div class="input-group">
                         <span class="input-group-addon" id="register-username-addon">
                             <span class=" glyphicon glyphicon-user"></span>
                         </span>
-                        <input type="username" id="register-username" name="username" class="form-control" describedby="register-username-addon" placeholder="Username">
+                        <input ng-model="user.username" type="username" id="register-username" name="username" class="form-control" describedby="register-username-addon" placeholder="Username">
                     </div>
 
+                    <!-- Password -->
                     <label for="register-password">Password</label>
                     <div class="input-group">
                         <span class="input-group-addon" id="register-password-addon">
                             <span class=" glyphicon glyphicon-lock"></span>
                         </span>
-                        <input type="password" id="register-password" name="password" class="form-control" describedby="register-password-addon" placeholder="Password">
+                        <input ng-model="user.password" type="password" id="register-password" name="password" class="form-control" describedby="register-password-addon" placeholder="Password">
+                    </div>
+
+                    <!-- Password Again -->
+                    <label for="register-password-again">Password Again</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="register-password-again-addon">
+                            <span class=" glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input ng-model="user.passwordAgain" type="password" id="register-password-again" name="password" class="form-control" describedby="register-password-again-addon" placeholder="Password Again">
                     </div>
 
                     <div class="row">
+
                         <div class="col-lg-6">
-                            <label for="register-category">Category</label>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="register-category-addon">
-                                    <span class=" glyphicon glyphicon-tasks"></span>
-                                </span>
-                                <select name="category" class="form-control" id="register-category" describedby="register-category-addon">
-                                    <option value="-1">All Categories</option>
-                                    <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
-                                </select>
+
+                            <!-- Category -->
+                            <div ng-show="!user.subscribeToAll">
+                                <label for="register-category">Category</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="register-category-addon">
+                                        <span class=" glyphicon glyphicon-tasks"></span>
+                                    </span>
+                                    <select name="category"
+                                            class="form-control"
+                                            id="register-category"
+                                            describedby="register-category-addon"
+                                            ng-model="user.category"
+                                            ng-options="category.name for category in categories track by category.id">
+                                    </select>
+                                </div>
                             </div>
+
+                            <!-- Subscribe to all -->
+                            <label for="register-subscribe-all">Subscribe to all categories</label>
+                            <div class="input-group">
+                                <input ng-model="user.subscribeToAll" type="checkbox" id="register-subscribe-all"> Yes, subscribe to all categories,<br/> enjoy all your books today!
+                            </div>
+
                         </div>
+
+                        <!-- Total Amount -->
                         <div class="col-lg-6">
                             <label for="register-total">Total Amount</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input id="register-total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="20" disabled>
+                                <input ng-model="user.total" id="register-total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" disabled>
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="row">
+
                     </div>
 
                 </form>
@@ -78,7 +115,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create Account</button>
+                <button type="button" class="btn btn-primary" ng-click="clickSaveUser()">Register</button>
             </div>
 
         </div>

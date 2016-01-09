@@ -49,7 +49,6 @@ app.controller('ManageLanguagesController', ['$scope', '$http', 'languageFactory
             $http.delete('/language/' + language.id).success(function (data) {
                 languageFactory.getAll().success(function(languages) {
                     $scope.languages = languages;
-                    $('#editLanguageModal').modal('hide');
                 });
             });
         }
