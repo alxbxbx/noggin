@@ -7,10 +7,10 @@ from datetime import timedelta
 
 def main():
 	#Configuration
-	temp_path = 'C:/Lucene/temp'
+	temp_path = '/home/filip/desktop/ivanovic/temp'
 	host = 'localhost'
 	username = 'root'
-	password = ''
+	password = 'root'
 	database_name = 'noggin'
 
 	#Read all files from temp folder

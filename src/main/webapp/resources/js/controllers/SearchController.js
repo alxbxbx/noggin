@@ -88,11 +88,14 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             authorSC: $scope.searchAuthorCondition.id
         };
 
-        console.log(searchData);
-
-        $http.get('/search', searchData).success(function (data) {
-            console.log(data);
+        $http({
+            url: '/search',
+            method: 'GET',
+            params: searchData
+        }).success(function (data) {
+            $scope.books = data;
         });
+
     }
 
 }]);

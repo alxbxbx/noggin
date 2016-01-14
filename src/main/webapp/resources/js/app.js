@@ -38,3 +38,14 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/'
         });
 }]);
+
+app.run(['$rootScope', '$location', '$http', function ($rootScope, $location, $http) {
+    $rootScope.$on('$routeChangeStart', function (event) {
+        $http.get('/login-check').success(function (data) {
+            if (data == false && window.location.hash != '#/') {
+                event.preventDefault();
+                $location.path('/');
+            }
+        });
+    });
+}]);

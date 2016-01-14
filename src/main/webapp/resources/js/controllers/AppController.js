@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AppController', ['$scope', '$http', 'userFactory', 'authService', 'categoryFactory',
-    function ($scope, $http, userFactory, authService, categoryFactory) {
+app.controller('AppController', ['$location', '$scope', '$http', 'userFactory', 'authService', 'categoryFactory',
+    function ($location, $scope, $http, userFactory, authService, categoryFactory) {
 
     $scope.login = function(username, password) {
         authService.login(username, password).success(function (user) {
@@ -16,12 +16,10 @@ app.controller('AppController', ['$scope', '$http', 'userFactory', 'authService'
     };
 
     $scope.logout = function() {
-        authService.logout().success(function (user) {
-            if (!user) {
-                alert("Failed to logout!");
-            } else {
-                sessionStorage.removeItem("auth");
-            }
+        authService.logout().success(function () {
+            sessionStorage.removeItem("auth");
+            $scope.auth = null;
+            $location.url('/');
         });
     }
 

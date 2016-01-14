@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="/#/"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> &nbsp;Faculty of Technical Science</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" ng-show="auth">
                 <li><a href="/#/search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> &nbsp;&nbsp;Search</a></li>
             </ul>
             <ul ng-hide="auth" class="nav navbar-nav navbar-right">
@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="">Edit My Profile</a></li>
                         <li><a href="" data-toggle="modal" data-target="#changePasswordModal">Change My Password</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a href="" ng-click="logout()">Logout</a></li>
                     </ul>
                 </li>
                 <li ng-show="auth.type == '1'" class="dropdown">

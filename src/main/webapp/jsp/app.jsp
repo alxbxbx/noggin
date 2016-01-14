@@ -49,7 +49,8 @@
         <script type="text/javascript" src="/resources/js/controllers/ManageBooksController.js"></script>
         <script type="text/javascript" src="/resources/js/controllers/ManageUsersController.js"></script>
         <script type="text/javascript" src="/resources/js/controllers/ManageCategoriesController.js"></script>
-        <script type="text/javascript" src="/resources/js/controllers/ManageLanguagesController.js"></script>
+		<script type="text/javascript" src="/resources/js/controllers/ManageLanguagesController.js"></script>
+		<script type="text/javascript" src="/resources/js/controllers/HomeController.js"></script>
 
         <script type="text/javascript" src="/resources/js/controllers/UploadController.js"></script>
 
