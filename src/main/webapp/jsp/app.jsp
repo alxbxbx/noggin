@@ -14,7 +14,7 @@
 
 		<div ng-include="'/resources/html/modals/login.html'"></div>
 		<div ng-include="'/resources/html/modals/change_password.html'"></div>
-		<div ng-include="'/resources/html/modals/edit_profile.html'"></div>
+		<div ng-include="'/resources/html/modals/edit_user.html'"></div>
 		<div ng-include="'/resources/html/modals/register.html'"></div>
 
         <div ng-include="'/resources/html/partials/main_menu.html'"></div>

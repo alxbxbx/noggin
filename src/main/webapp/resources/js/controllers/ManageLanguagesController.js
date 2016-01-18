@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('ManageLanguagesController', ['$scope', '$http', 'languageFactory', function ($scope, $http, languageFactory) {
+app.controller('ManageLanguagesController', ['$scope', '$http', 'languageFactory',
+    function ($scope, $http, languageFactory) {
 
     // Get Languages
     languageFactory.getAll().success(function(data) {

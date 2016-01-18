@@ -150,7 +150,8 @@
                     <td>{{ book.publicationYear }}</td>
                     <td>{{ book.category.name }}</td>
                     <td style="width:100px;text-align:right;">
-                        <a href="#" class="btn btn-primary btn-xs" role="button">
+                        <a ng-show="!auth.category || auth.category.id == book.category.id"
+                           href="#" class="btn btn-primary btn-xs" role="button">
                             <span class="glyphicon glyphicon-download-alt"></span> Download
                         </a>
                     </td>

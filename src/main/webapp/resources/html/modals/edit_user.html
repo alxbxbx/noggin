@@ -51,20 +51,32 @@
 
                 <div class="row">
 
-                    <!-- Category -->
+
                     <div class="col-lg-6">
-                        <label for="edit-user-category">Category</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="edit-user-category-addon">
-                                <span class=" glyphicon glyphicon-tasks"></span>
-                            </span>
-                            <select ng-model="user.category"
-                                    class="form-control"
-                                    id="edit-user-category"
-                                    ng-options="category.name for category in categories track by category.id"
-                                    describedby="edit-user-category-addon">
-                            </select>
+
+                        <!-- Category -->
+                        <div ng-hide="user.subscribeToAll">
+                            <label for="edit-user-category">Category</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="edit-user-category-addon">
+                                    <span class=" glyphicon glyphicon-tasks"></span>
+                                </span>
+                                <select ng-model="user.category"
+                                        class="form-control"
+                                        id="edit-user-category"
+                                        ng-options="category.name for category in categories track by category.id"
+                                        describedby="edit-user-category-addon">
+                                </select>
+                            </div>
                         </div>
+
+                        <!-- Subscribe to all -->
+                        <label for="register-subscribe-all">Subscribe to all categories</label>
+                        <div class="input-group">
+                            <input ng-checked="user.subscribeToAll" ng-model="user.subscribeToAll" type="checkbox" id="register-subscribe-all">
+                            Yes, subscribe to all categories,<br /> let him download any book!
+                        </div>
+
                     </div>
 
                     <!-- Type -->
