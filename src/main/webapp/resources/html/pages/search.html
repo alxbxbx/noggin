@@ -123,10 +123,20 @@
 </div>
 
 <div class="row" style="margin-bottom:10px;">
-    <div class="col-lg-12">
-        <a href="" ng-click="clickSearch()" class="btn btn-primary btn-sm" role="button">
-            <span class="glyphicon glyphicon-search"></span> Search Database for Books
-        </a>
+
+        <div class="col-lg-12">
+            <label for="pickCategory">Category</label>
+            <select id="pickCategory"
+                    type="text"
+                    class="form-control"
+                    ng-model="category"
+                    ng-options="category.name for category in categories">
+            </select>
+            <br/>
+            <a href="" ng-click="clickSearch()" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-search"></span> Search Database for Books
+            </a>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -136,8 +146,7 @@
             <table class="table table-striped">
                 <tr>
                     <th>#</th>
-                    <th>Pisac</th>
-                    <th>Naziv Knjige</th>
+                    <th>Knjiga</th>
                     <th>Jezik</th>
                     <th>Godina</th>
                     <th>Kategorija</th>
@@ -145,14 +154,13 @@
                 </tr>
                 <tr ng-repeat="book in books">
                     <td>{{ book.id }}</td>
-                    <td>{{ book.author }}</td>
-                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}, {{ book.title }} <br /> {{ book.highlight }}</td>
                     <td>{{ book.language.name }}</td>
                     <td>{{ book.publicationYear }}</td>
                     <td>{{ book.category.name }}</td>
                     <td style="width:100px;text-align:right;">
                         <a ng-show="!auth.category || auth.category.id == book.category.id"
-                           href="{{ book.path }}" class="btn btn-primary btn-xs" role="button">
+                           href="/lucene_storage/{{ book.filename }}" class="btn btn-primary btn-xs" role="button">
                             <span class="glyphicon glyphicon-download-alt"></span> Download
                         </a>
                     </td>
