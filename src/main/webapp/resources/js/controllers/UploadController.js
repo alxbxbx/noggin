@@ -49,7 +49,7 @@ app.controller('UploadController', ['$window', '$scope', '$http', 'Upload', '$ti
             alert('Title and keywords are important!');
         }
         $http.post('/book/permanent', $scope.tempFile).success(function (data) {
-            $window.location.href = "/manage/books";
+            $window.location.href = "/#/manage/books";
         });
     };
 
