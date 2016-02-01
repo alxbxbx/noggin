@@ -37,7 +37,7 @@ public class SearchController {
 			@RequestParam("authorST") String authorST, @RequestParam("authorSC") String authorSC,
 			@RequestParam("keywords") String keywords, @RequestParam("keywordsST") String keywordsST,
 			@RequestParam("keywordsSC") String keywordsSC, @RequestParam("title") String title,
-			@RequestParam("titleST") String titleST, @RequestParam("titleSC") String titleSC, @RequestBody Category category) {
+			@RequestParam("titleST") String titleST, @RequestParam("titleSC") String titleSC, @RequestParam("category") String category) {
 		List<HighlightBook> hbooks = new ArrayList<HighlightBook>();
 		List<ResultData> results = new ArrayList<ResultData>();
 		try {
@@ -132,7 +132,7 @@ public class SearchController {
 				System.out.println("There is no highlight.");
 			}
 			if(category != null){
-				if(book.getCategory().getId().equals(category.getId()))
+				if(book.getCategory().getId().equals(category))
 					hbooks.add(hbook);	
 			}
 			else{
