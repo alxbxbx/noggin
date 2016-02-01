@@ -132,11 +132,11 @@
                     ng-model="category"
                     ng-options="category.name for category in categories">
             </select>
-            <br/>
+            <br ng-show="!searchAllCategories"/>
             <a href="" ng-click="clickSearch()" class="btn btn-primary btn-sm" role="button">
                 <span class="glyphicon glyphicon-search"></span> Search Database for Books
             </a>
-            &nbsp;&nbsp;&nbsp;<input ng-model="searchAllCategories" type="checkbox" id="register-subscribe-all"> Search all categories
+            &nbsp;&nbsp;&nbsp;<input ng-model="searchAllCategories" type="checkbox" ng-init="searchAllCategories=true" id="register-subscribe-all"> Search all categories
         </div>
     </div>
 </div>
