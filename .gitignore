@@ -3,6 +3,9 @@
 .project
 .settings
 /bin/
+/src/main/webapp/lucene_index/*
+/src/main/webapp/lucene_storage/*
+/src/main/webapp/lucene_temp/*
 /src/main/resources/hibernate.cfg.xml
 /src/main/resources/application.properties
 
