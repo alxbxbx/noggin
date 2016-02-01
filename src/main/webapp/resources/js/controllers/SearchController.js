@@ -85,14 +85,24 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             titleSC: $scope.searchTitleCondition.id,
             author: $scope.searchAuthor,
             authorST: $scope.searchAuthorType.id,
-            authorSC: $scope.searchAuthorCondition.id
+            authorSC: $scope.searchAuthorCondition.id,
+            category: $scope.category
         };
+
+        console.log(searchData);
 
         $http({
             url: '/search',
             method: 'GET',
             params: searchData
         }).success(function (data) {
+
+            // Replace <B> and </B> with empty string
+            for (var i = 0; i < data.length; i++) {
+                data[i].highlight = data[i].highlight.replace("<B>", "");
+                data[i].highlight = data[i].highlight.replace("</B>", "");
+            }
+
             $scope.books = data;
         });
 
