@@ -86,10 +86,8 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             author: $scope.searchAuthor,
             authorST: $scope.searchAuthorType.id,
             authorSC: $scope.searchAuthorCondition.id,
-            category: $scope.category
+            category: $scope.category.id
         };
-
-        console.log(searchData);
 
         $http({
             url: '/search',
@@ -104,6 +102,8 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             }
 
             $scope.books = data;
+
+            console.log(data);
         });
 
     }
