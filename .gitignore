@@ -6,7 +6,6 @@
 /src/main/webapp/resources/lucene_index/*
 /src/main/webapp/resources/lucene_storage/*
 /src/main/webapp/resources/lucene_temp/*
-
 /src/main/resources/hibernate.cfg.xml
 /src/main/resources/application.properties
 
