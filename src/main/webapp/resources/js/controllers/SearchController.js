@@ -73,6 +73,12 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
 
     $scope.clickSearch = function() {
 
+        if (!$scope.category) {
+            var catId = null;
+        } else {
+            var catId = $scope.category.id;
+        }
+
         var searchData = {
             text: $scope.searchText,
             textST: $scope.searchTextType.id,
@@ -86,8 +92,10 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             author: $scope.searchAuthor,
             authorST: $scope.searchAuthorType.id,
             authorSC: $scope.searchAuthorCondition.id,
-            category: $scope.category.id
+            category: catId
         };
+
+        console.log(searchData);
 
         $http({
             url: '/search',
