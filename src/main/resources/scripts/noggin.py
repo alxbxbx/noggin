@@ -7,7 +7,7 @@ from datetime import timedelta
 
 def main():
 	#Configuration
-	temp_path = '/home/filip/desktop/ivanovic/temp'
+	temp_path = 'C:\Users\Alxbxbx\git\noggin\src\main\webapp\lucene_temp'
 	host = 'localhost'
 	username = 'root'
 	password = 'root'

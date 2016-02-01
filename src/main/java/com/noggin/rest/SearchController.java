@@ -8,6 +8,7 @@ import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import com.noggin.lucene.model.SearchType;
 import com.noggin.lucene.search.QueryBuilder;
 import com.noggin.lucene.search.ResultRetriever;
 import com.noggin.models.Book;
+import com.noggin.models.Category;
 import com.noggin.models.HighlightBook;
 
 @RestController
@@ -35,7 +37,7 @@ public class SearchController {
 			@RequestParam("authorST") String authorST, @RequestParam("authorSC") String authorSC,
 			@RequestParam("keywords") String keywords, @RequestParam("keywordsST") String keywordsST,
 			@RequestParam("keywordsSC") String keywordsSC, @RequestParam("title") String title,
-			@RequestParam("titleST") String titleST, @RequestParam("titleSC") String titleSC) {
+			@RequestParam("titleST") String titleST, @RequestParam("titleSC") String titleSC, @RequestBody Category category) {
 		List<HighlightBook> hbooks = new ArrayList<HighlightBook>();
 		List<ResultData> results = new ArrayList<ResultData>();
 		try {
@@ -129,7 +131,14 @@ public class SearchController {
 			}catch(NullPointerException e){
 				System.out.println("There is no highlight.");
 			}
-			hbooks.add(hbook);
+			if(category != null){
+				if(book.getCategory().getId().equals(category.getId()))
+					hbooks.add(hbook);	
+			}
+			else{
+				hbooks.add(hbook);
+			}
+			
 			
 		}
 		

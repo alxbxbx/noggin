@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -159,12 +160,28 @@ public class BookController {
 	public ResponseEntity<Book> storeBook(@RequestBody Book book) {
 		Book b = ib.findOne(book.getId());
 		
-		b.setAuthor(book.getAuthor());
+		
 		b.setCategory(book.getCategory());
-		b.setKeywords(book.getKeywords());
+		byte keytext[] = book.getKeywords().getBytes();
+		byte titletext[] = book.getTitle().getBytes();
+		byte authortext[] = book.getAuthor().getBytes();
+		String keywords = "";
+		String title = "";
+		String author = "";
+		try {
+			keywords = new String(keytext, "UTF-8");
+			title = new String(titletext, "UTF-8");
+			author = new String(authortext, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		b.setKeywords(keywords);
+		b.setTitle(title);
+		b.setAuthor(author);
 		b.setLanguage(book.getLanguage());
 		b.setPublicationYear(book.getPublicationYear());
-		b.setTitle(book.getTitle());
+		
 		b.setUser(book.getUser());
 		b.setTemp(0);
 		
