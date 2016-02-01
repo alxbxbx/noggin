@@ -95,6 +95,7 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
             category: catId
         };
 
+        console.log("REQUEST:");
         console.log(searchData);
 
         $http({
@@ -111,6 +112,7 @@ app.controller('SearchController', ['$scope', '$http', 'bookFactory', 'categoryF
 
             $scope.books = data;
 
+            console.log("RESPONSE");
             console.log(data);
         });
 
