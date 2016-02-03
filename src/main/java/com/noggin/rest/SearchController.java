@@ -113,31 +113,44 @@ public class SearchController {
 			return null;
 		}
 		List<Book> books = ib.findAll();
-		for(ResultData r : results){
-			Book book = new HighlightBook();
-			System.out.println("THIS IS TITLE: "+ r.getTitle());
-			System.out.println("HIGHLIGHT IS: " + r.getHighlight());
-			System.out.println("AUTHOR IS: " + r.getAuthor());
-			System.out.println("KEYWORDS ARE: " + r.getKeywords());
-			System.out.println("FILENAME IS: " + r.getLocation());
-			for(Book b : books){
-				if(b.getFilename().equals(r.getLocation())){
-					book = b;
+		if((author.equals("")) && (text.equals("")) && (keywords.equals("")) && (title.equals(""))){
+			if(category == null){
+				for (Book b : books){
+					HighlightBook hbook = new HighlightBook(b);
+					hbooks.add(hbook);
+				}
+			}else{
+				for (Book b : books){
+					if(b.getCategory().getId().equals(Integer.parseInt(category))){
+						HighlightBook hbook = new HighlightBook(b);
+						hbooks.add(hbook);
+					}
+					
 				}
 			}
-			HighlightBook hbook = new HighlightBook(book);
-			try{
-				hbook.setHighlight(r.getHighlight());
-			}catch(NullPointerException e){
-				System.out.println("There is no highlight.");
-			}
-			if(category != null){
-				if(book.getCategory().getId().equals(category))
-					hbooks.add(hbook);	
-			}
-			else{
-				hbooks.add(hbook);
-			}
+		}else{
+			for(ResultData r : results){
+				Book book = new HighlightBook();
+				for(Book b : books){
+					if(b.getFilename().equals(r.getLocation())){
+						book = b;
+					}
+				}
+				HighlightBook hbook = new HighlightBook(book);
+				try{
+					hbook.setHighlight(r.getHighlight());
+				}catch(NullPointerException e){
+					System.out.println("There is no highlight.");
+				}
+				if(category != null){
+					if(book.getCategory().getId().equals(Integer.parseInt(category)))
+						hbooks.add(hbook);	
+				}
+				else{
+					hbooks.add(hbook);
+				}
+		}
+		
 			
 			
 		}
